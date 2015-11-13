@@ -12499,7 +12499,7 @@ td .lbl:only-child {
     padding-right: 12px;
   }
 }
-.login-container {
+.login-container,#signup-box {
   width: 375px;
   margin: 0 auto;
 }
