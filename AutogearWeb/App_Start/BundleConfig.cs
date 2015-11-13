@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace AutogearWeb
 {
@@ -25,14 +24,35 @@ namespace AutogearWeb
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css"));
+            bundles.Add(new StyleBundle("~/Content/AceCss").Include(
+                      "~/assets/css/font-awesome.css",
+                      "~/assets/css/jquery-ui.css",
+                      "~/assets/css/bootstrap-datepicker3.css",
+                      "~/assets/css/ui.jqgrid.css" ,
+                      "~/assets/css/ace-fonts.css",
+                      "~/assets/css/ace.css"
+                      ));
 
             // Project specific scripts and style sheets
-            bundles.Add(new ScriptBundle("~/assets/js/jquery").Include(
+            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery.js",
+                        "~/assets/js/bootstrap.js",
+                        "~/assets/js/date-time/bootstrap-datepicker.js",
+                        "~/assets/js/jqGrid/jquery.jqGrid.js",
+                        "~/assets/js/jqGrid/i18n/grid.locale-en.js",
                         "~/Scripts/jquery-ui.js",
-                        "~/Scripts/jquery-ui.custom.js"));
+                        "~/Scripts/jquery-ui.custom.js",
+                          "~/assets/js/jquery-ui.custom.js",
+    "~/assets/js/jquery.ui.touch-punch.js",
+    "~/assets/js/jquery.easypiechart.js",
+    "~/assets/js/jquery.sparkline.js"
+  ));
 
-
+            // Theme js
+            bundles.Add(new ScriptBundle("~/bundles/ace").Include(
+                        "~/assets/js/ace/*",
+                        "~/assets/autogear/js/*"));
+           
 
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862
