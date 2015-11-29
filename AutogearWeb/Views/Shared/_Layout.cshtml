@@ -63,7 +63,7 @@
                     <div class="breadcrumbs" id="breadcrumbs">
                         <script type="text/javascript">
                             try {
-                                ace.settings.check('breadcrumbs', 'fixed')
+                                ace.settings.check('breadcrumbs', 'fixed');
                             } catch (e) {
                             }
                         </script>
@@ -134,10 +134,6 @@
             <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
         </a>
     </div><!-- /.main-container -->
-    
-        @Scripts.Render("~/bundles/jquery")
-        <!-- ace scripts -->
-        @Scripts.Render("~/bundles/ace")
         @RenderSection("Scripts",false)
     
 </body>

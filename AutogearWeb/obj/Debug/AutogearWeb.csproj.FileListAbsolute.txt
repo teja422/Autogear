@@ -120,3 +120,15 @@ C:\Projects\Autogear\AutogearWeb\bin\Microsoft.Owin.Security.MicrosoftAccount.xm
 C:\Projects\Autogear\AutogearWeb\obj\Debug\AutogearWeb.csprojResolveAssemblyReference.cache
 C:\Projects\Autogear\AutogearWeb\obj\Debug\AutogearWeb.dll
 C:\Projects\Autogear\AutogearWeb\obj\Debug\AutogearWeb.pdb
+C:\Projects\Autogear\AutogearWeb\bin\Microsoft.Practices.ServiceLocation.dll
+C:\Projects\Autogear\AutogearWeb\bin\Microsoft.Practices.Unity.Configuration.dll
+C:\Projects\Autogear\AutogearWeb\bin\Microsoft.Practices.Unity.dll
+C:\Projects\Autogear\AutogearWeb\bin\Microsoft.Practices.Unity.Mvc.dll
+C:\Projects\Autogear\AutogearWeb\bin\Microsoft.Practices.Unity.RegistrationByConvention.dll
+C:\Projects\Autogear\AutogearWeb\bin\WebActivatorEx.dll
+C:\Projects\Autogear\AutogearWeb\bin\Microsoft.Practices.ServiceLocation.pdb
+C:\Projects\Autogear\AutogearWeb\bin\Microsoft.Practices.ServiceLocation.xml
+C:\Projects\Autogear\AutogearWeb\bin\Microsoft.Practices.Unity.xml
+C:\Projects\Autogear\AutogearWeb\bin\Microsoft.Practices.Unity.Configuration.xml
+C:\Projects\Autogear\AutogearWeb\bin\Microsoft.Practices.Unity.Mvc.xml
+C:\Projects\Autogear\AutogearWeb\bin\Microsoft.Practices.Unity.RegistrationByConvention.xml
