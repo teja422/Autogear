@@ -52,95 +52,11 @@
 
     <!-- /section:basics/navbar.layout -->
     <div class="main-container" id="main-container">
-
-<<<<<<< HEAD
-    @Html.Partial("_NavigationBar")
-=======
-        <!-- #section:basics/sidebar -->
-        <div id="sidebar" class="sidebar responsive">
-
-            <!-- /.sidebar-shortcuts -->
-
-            <ul class="nav nav-list" id='mainmenu'>
-                <li class="active">
-                    <a href="index.html">
-                        <i class="menu-icon fa fa-tachometer"></i>
-                        <span class="menu-text"> Dashboard </span>
-                    </a>
-
-                    <b class="arrow"></b>
-                </li>
-
-                <li id="liInstructor">
-                    <a href="/Instructor/Home" class="dropdown-toggle">
-                        <i class="menu-icon fa fa-desktop"></i>
-                        <span class="menu-text">
-                            Instructor
-                        </span>
-                    </a>
-
-                    <b class="arrow"></b>
-                </li>
-                <li class="">
-                    <a href="#" class="dropdown-toggle">
-                        <i class="menu-icon fa fa-list"></i>
-                        <span class="menu-text">
-                            Students
-                        </span>
-                    </a>
-
-                    <b class="arrow"></b>
-                </li>
-                <li class="">
-                    <a href="#" class="dropdown-toggle">
-                        <i class="menu-icon fa fa-pencil-square-o"></i>
-                        <span class="menu-text">
-                            Lessons
-                        </span>
-                    </a>
-
-                    <b class="arrow"></b>
-                </li>
-
-
-                <li class="">
-                    <a href="calendar.html">
-                        <i class="menu-icon fa fa-calendar"></i>
-
-                        <span class="menu-text">
-                            Calendar
-
-                            <!-- #section:basics/sidebar.layout.badge -->
-                            <span class="badge badge-transparent tooltip-error" title="2 Important Events">
-                                <i class="ace-icon fa fa-exclamation-triangle red bigger-130"></i>
-                            </span>
-
-                            <!-- /section:basics/sidebar.layout.badge -->
-                        </span>
-                    </a>
-
-                    <b class="arrow"></b>
-                </li>
-
-
-            </ul><!-- /.nav-list -->
-            <!-- #section:basics/sidebar.layout.minimize -->
-            <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
-                <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
-            </div>
-
-            <!-- /section:basics/sidebar.layout.minimize -->
-            <script type="text/javascript">
-                try { ace.settings.check('sidebar', 'collapsed') } catch (e) { }
-            </script>
-        </div>
-
->>>>>>> origin/dev
-        <!-- /section:basics/sidebar -->
+        @Html.Partial("_NavigationBar")
         <div class="main-content">
             <div class="main-content-inner">
                 <!-- #section:basics/content.breadcrumbs -->
-<<<<<<< HEAD
+
                 @if (Request.IsAuthenticated)
                 {
                     <div class="breadcrumbs" id="breadcrumbs">
@@ -159,21 +75,6 @@
                             <li class="active">@ViewBag.Title</li>
                         </ul><!-- /.breadcrumb -->
 
-=======
-                <div class="breadcrumbs" id="breadcrumbs">
-                    <script type="text/javascript">
-                        try { ace.settings.check('breadcrumbs', 'fixed') } catch (e) { }
-                    </script>
-
-                    <ul class="breadcrumb">
-                        <li>
-                            <i class="ace-icon fa fa-home home-icon"></i>
-                            <a href="#">Home</a>
-                        </li>
-                        <li class="active">@ViewBag.Title</li>
-                    </ul><!-- /.breadcrumb -->
-                </div>
->>>>>>> origin/dev
 
                     </div>
                 }

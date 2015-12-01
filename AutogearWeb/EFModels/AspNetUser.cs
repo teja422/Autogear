@@ -39,6 +39,7 @@ namespace AutogearWeb.EFModels
         public string Country { get; set; }
         public int EmployeeId { get; set; }
     
+        public virtual Instructor Instructor { get; set; }
         public virtual ICollection<User> Users { get; set; }
     }
 }

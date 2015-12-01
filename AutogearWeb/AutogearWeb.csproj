@@ -240,7 +240,43 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AutogearModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="EFModels\Booking.cs">
+      <DependentUpon>AutogearModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="EFModels\C__MigrationHistory.cs">
+      <DependentUpon>AutogearModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModels\Instructor.cs">
+      <DependentUpon>AutogearModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModels\Instructor_Leaves.cs">
+      <DependentUpon>AutogearModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModels\Instructor_Student.cs">
+      <DependentUpon>AutogearModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModels\Package_Details.cs">
+      <DependentUpon>AutogearModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModels\PostCode.cs">
+      <DependentUpon>AutogearModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModels\RTA.cs">
+      <DependentUpon>AutogearModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModels\State.cs">
+      <DependentUpon>AutogearModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModels\Student.cs">
+      <DependentUpon>AutogearModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModels\Student_Address.cs">
+      <DependentUpon>AutogearModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModels\Student_License.cs">
+      <DependentUpon>AutogearModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFModels\Suburb.cs">
       <DependentUpon>AutogearModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EFModels\User.cs">
