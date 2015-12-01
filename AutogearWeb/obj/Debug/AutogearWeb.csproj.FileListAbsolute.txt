@@ -117,7 +117,6 @@ C:\Projects\Autogear\AutogearWeb\bin\Microsoft.Owin.Security.OAuth.xml
 C:\Projects\Autogear\AutogearWeb\bin\Microsoft.Owin.Security.Google.xml
 C:\Projects\Autogear\AutogearWeb\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Projects\Autogear\AutogearWeb\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Projects\Autogear\AutogearWeb\obj\Debug\AutogearWeb.csprojResolveAssemblyReference.cache
 C:\Projects\Autogear\AutogearWeb\obj\Debug\AutogearWeb.dll
 C:\Projects\Autogear\AutogearWeb\obj\Debug\AutogearWeb.pdb
 C:\Projects\Autogear\AutogearWeb\bin\Microsoft.Practices.ServiceLocation.dll
@@ -132,3 +131,6 @@ C:\Projects\Autogear\AutogearWeb\bin\Microsoft.Practices.Unity.xml
 C:\Projects\Autogear\AutogearWeb\bin\Microsoft.Practices.Unity.Configuration.xml
 C:\Projects\Autogear\AutogearWeb\bin\Microsoft.Practices.Unity.Mvc.xml
 C:\Projects\Autogear\AutogearWeb\bin\Microsoft.Practices.Unity.RegistrationByConvention.xml
+C:\Projects\Autogear\AutogearWeb\obj\Debug\AutogearWeb.csprojResolveAssemblyReference.cache
+C:\Projects\Autogear\AutogearWeb\bin\System.Web.Http.Owin.dll
+C:\Projects\Autogear\AutogearWeb\bin\System.Web.Http.Owin.xml
