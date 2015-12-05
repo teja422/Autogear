@@ -307,7 +307,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Autogear.sql" />
+    <Content Include="App_Data\AutogearDB.sql" />
     <Content Include="assets\autogear\js\calendar.js" />
     <Content Include="assets\autogear\js\dashboard.js" />
     <Content Include="assets\autogear\js\events.js" />
