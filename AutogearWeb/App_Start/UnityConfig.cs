@@ -2,6 +2,7 @@ using System;
 using System.Web;
 using AutogearWeb.Controllers;
 using AutogearWeb.Models;
+using AutogearWeb.Repositories;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
@@ -53,6 +54,7 @@ namespace AutogearWeb
             container.RegisterType<IRoleStore<IdentityRole, string>, RoleStore<IdentityRole>>(
             new InjectionConstructor(typeof(ApplicationDbContext)));
 
+            container.RegisterType<IInstructor, InstructorRepo>();
             container.RegisterType<AccountController>(
                 new InjectionConstructor(
                     typeof(ApplicationUserManager),

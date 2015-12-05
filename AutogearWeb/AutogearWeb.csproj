@@ -221,6 +221,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InstructorController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="EFModels\AspNetRole.cs">
       <DependentUpon>AutogearModel.tt</DependentUpon>
@@ -304,6 +305,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IInstructor.cs" />
+    <Compile Include="Repositories\InstructorRepo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -824,6 +826,8 @@
     <Content Include="Views\Master\Package.cshtml" />
     <Content Include="Views\Master\RTA.cshtml" />
     <Content Include="Views\Master\Postcodes.cshtml" />
+    <Content Include="Views\Instructor\Index.cshtml" />
+    <Content Include="Views\Instructor\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Providers\" />

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<AutogearWeb.EFModels.Instructor>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped table-bordered table-hover">
+    <thead class="thin-border-bottom">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mobile)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            var item1 = item;
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item1.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item1.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item1.Email)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item1.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item1.Mobile)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item1.InstructorId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item1.InstructorId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item1.InstructorId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

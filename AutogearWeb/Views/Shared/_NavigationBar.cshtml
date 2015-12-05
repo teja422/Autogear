@@ -4,7 +4,7 @@
     <div id="sidebar" class="sidebar responsive">
         <ul class="nav nav-list" id='mainmenu'>
             <li class="active">
-                <a href="index.html">
+                <a href="#">
                     <i class="menu-icon fa fa-tachometer"></i>
                     <span class="menu-text"> Dashboard </span>
                 </a>
@@ -13,7 +13,7 @@
             </li>
 
             <li id="liInstructor">
-                <a href="#" class="dropdown-toggle">
+                <a href="@Url.Action("Index","Instructor")" class="dropdown-toggle">
                     <i class="menu-icon fa fa-desktop"></i>
                     <span class="menu-text">
                         Instructor
@@ -23,7 +23,7 @@
                 <b class="arrow"></b>
             </li>
             <li class="">
-                <a href="#" class="dropdown-toggle">
+                <a href="@Url.Action("Register","Student")" class="dropdown-toggle">
                     <i class="menu-icon fa fa-list"></i>
                     <span class="menu-text">
                         Clients
@@ -45,7 +45,7 @@
 
 
             <li class="">
-                <a href="calendar.html">
+                <a href="#">
                     <i class="menu-icon fa fa-calendar"></i>
 
                     <span class="menu-text">
@@ -73,7 +73,7 @@
         <!-- /section:basics/sidebar.layout.minimize -->
         <script type="text/javascript">
             try {
-                ace.settings.check('sidebar', 'collapsed')
+                ace.settings.check('sidebar', 'collapsed');
             } catch (e) {
             }
         </script>
