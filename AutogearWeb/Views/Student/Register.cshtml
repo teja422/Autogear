@@ -1,0 +1,295 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+}
+<link rel="stylesheet" href="../assets/css/bootstrap.css" />
+<link rel="stylesheet" href="../assets/css/font-awesome.css" />
+
+<link rel="stylesheet" href="../assets/css/ace.css" />
+<link rel="stylesheet" href="../assets/css/ace-fonts.css" />
+
+<form class="form-horizontal" role="form">
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="form-field-1">Search Student</label>
+                <div class="col-sm-9">
+                    <input type="text" id="form-field-1" placeholder="StudentID or Student Name" class="col-xs-10 col-sm-8" />
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-3">
+
+        </div>
+    </div>
+    <h2>Student Personal Details</h2>
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> First Name</label>
+                <div class="col-sm-9">
+                    <input type="text" id="form-field-1" placeholder="First Name" class="col-xs-10 col-sm-8" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Last Name</label>
+                <div class="col-sm-9">
+                    <input type="text" id="form-field-1" placeholder="Last Name" class="col-xs-10 col-sm-8" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Gender</label>
+                <div class="col-sm-9">
+                    <select class="col-xs-10 col-sm-8" id="form-field-select-1">
+                        <option value=""></option>
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
+                    </select>
+                    </div>
+                        </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Start Date</label>
+                <div class="col-sm-9">
+                    <div class="input-group col-xs-10 col-sm-8">
+                        <input class="form-control date-picker" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy" />
+                        <span class="input-group-addon">
+                            <i class="fa fa-calendar bigger-110"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Status</label>
+                <div class="col-sm-9">
+                    <input type="text" id="form-field-1" placeholder="" class="col-xs-10 col-sm-8" />
+                </div>
+            </div>  
+        </div>
+        <div class="col-xs-6">
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Address Line 1</label>
+                <div class="col-sm-9">
+                    <input type="text" id="form-field-1" placeholder="Address Line 1" class="col-xs-10 col-sm-8" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Address Line 2</label>
+                <div class="col-sm-9">
+                    <input type="text" id="form-field-1" placeholder="Address Line 2" class="col-xs-10 col-sm-8" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Suburb</label>
+                <div class="col-sm-9">
+                    <input type="text" id="form-field-1" placeholder="Suburb" class="col-xs-10 col-sm-8" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Postcode</label>
+                <div class="col-sm-9">
+                    <input type="text" id="form-field-1" placeholder="Postcode" class="col-xs-10 col-sm-8" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Mobile Phone</label>
+                <div class="col-sm-9">
+                    <input type="text" id="form-field-1" placeholder="Mobile phone" class="col-xs-10 col-sm-8" />
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <h2>Student License Details</h2>
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> License No</label>
+                <div class="col-sm-9">
+                    <input type="text" id="form-field-1" placeholder="License No" class="col-xs-10 col-sm-8" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> State</label>
+                <div class="col-sm-9">
+                    <input type="text" id="form-field-1" placeholder="State" class="col-xs-10 col-sm-8" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Expiry Date</label>
+                <div class="col-sm-9">
+                    <input type="text" id="form-field-1" placeholder="Expiry Date" class="col-xs-10 col-sm-8" />
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Class</label>
+                <div class="col-sm-9">
+                    <input type="text" id="form-field-1" placeholder="Class" class="col-xs-10 col-sm-8" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Passed Date</label>
+                <div class="col-sm-9">
+                    <input type="text" id="form-field-1" placeholder="Passed Date" class="col-xs-10 col-sm-8" />
+                </div>
+            </div>
+        </div>
+
+     </div>
+    <h2>Lesson Booking</h2>
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Package</label>
+                <div class="col-sm-9">
+                    <select class="col-xs-10 col-sm-8" id="form-field-select-1">
+                        <option value=""></option>
+                        <option value="M">1 Hr package</option>
+                        <option value="F">2 Hr package</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Package Details</label>
+                <div class="col-sm-9">
+                    <input type="text" id="form-field-1" placeholder="Package Details" class="col-xs-10 col-sm-8" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Discount</label>
+                <div class="col-sm-9">
+                    <input type="text" id="form-field-1" placeholder="Discount" class="col-xs-10 col-sm-8" />
+                </div>
+            </div> 
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Pickup Location</label>
+                <div class="col-sm-9">
+                    <input type="text" id="form-field-1" placeholder="Pickup Location" class="col-xs-10 col-sm-8" />
+                </div>
+            </div>                     
+        </div>
+        <div class="col-xs-6">
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Lesson Date</label>
+                <div class="col-sm-9">
+                    <input type="text" id="form-field-1" placeholder="Lesson Date" class="col-xs-10 col-sm-8" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> StartTime</label>
+                <div class="col-sm-9">
+                    <input type="text" id="form-field-1" placeholder="Start Time" class="col-xs-10 col-sm-8" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> EndTime</label>
+                <div class="col-sm-9">
+                    <input type="text" id="form-field-1" placeholder="End Time" class="col-xs-10 col-sm-8" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Drop Location</label>
+                <div class="col-sm-9">
+                    <input type="text" id="form-field-1" placeholder="Drop Location" class="col-xs-10 col-sm-8" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <h2>Driving Test Booking</h2>
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Package</label>
+                <div class="col-sm-9">
+                    <select class="col-xs-10 col-sm-8" id="form-field-select-1">
+                        <option value=""></option>
+                        <option value="M">1 Hr package</option>
+                        <option value="F">2 Hr package</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Package Details</label>
+                <div class="col-sm-9">
+                    <input type="text" id="form-field-1" placeholder="Package Details" class="col-xs-10 col-sm-8" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Discount</label>
+                <div class="col-sm-9">
+                    <input type="text" id="form-field-1" placeholder="Discount" class="col-xs-10 col-sm-8" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Pickup Location</label>
+                <div class="col-sm-9">
+                    <input type="text" id="form-field-1" placeholder="Pickup Location" class="col-xs-10 col-sm-8" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Drop Location</label>
+                <div class="col-sm-9">
+                    <input type="text" id="form-field-1" placeholder="Drop Location" class="col-xs-10 col-sm-8" />
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Test Date</label>
+                <div class="col-sm-9">
+                    <input type="text" id="form-field-1" placeholder="Test Date" class="col-xs-10 col-sm-8" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> StartTime</label>
+                <div class="col-sm-9">
+                    <input type="text" id="form-field-1" placeholder="Start Time" class="col-xs-10 col-sm-8" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> EndTime</label>
+                <div class="col-sm-9">
+                    <input type="text" id="form-field-1" placeholder="End Time" class="col-xs-10 col-sm-8" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> RTA</label>
+                <div class="col-sm-9">
+                    <select class="col-xs-10 col-sm-8" id="form-field-select-1">
+                        <option value=""></option>
+                        <option value="M">Chatswood</option>
+                        <option value="F">NorthRyde</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="=row">
+        <div class="clearfix form-actions">
+            <div class="col-md-offset-3 col-md-9">
+                <button class="btn btn-info" type="button">
+                    <i class="ace-icon fa fa-check bigger-110"></i>
+                    Submit
+                </button>
+
+                &nbsp; &nbsp; &nbsp;
+                <button class="btn" type="reset">
+                    <i class="ace-icon fa fa-undo bigger-110"></i>
+                    Reset
+                </button>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $('.date-picker').datepicker({
+            autoclose: true,
+            todayHighlight: true
+        })
+            //show datepicker when clicking on the icon
+				.next().on(ace.click_event, function () {
+				    $(this).prev().focus();
+				});
+    </script>
+</form>
+

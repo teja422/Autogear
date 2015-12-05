@@ -222,6 +222,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+<<<<<<< HEAD
     <Compile Include="EFModels\AspNetRole.cs">
       <DependentUpon>AutogearModel.tt</DependentUpon>
     </Compile>
@@ -294,6 +295,10 @@
     <Compile Include="EFModels\User.cs">
       <DependentUpon>AutogearModel.tt</DependentUpon>
     </Compile>
+=======
+    <Compile Include="Controllers\MasterController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
+>>>>>>> dev
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -814,7 +819,16 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Admin\Dashboard.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Shared\_NavigationBar.cshtml" />
+=======
+    <Content Include="Views\Instructor\Home.cshtml" />
+    <Content Include="Views\Instructor\Dashboard.cshtml" />
+    <Content Include="Views\Student\Register.cshtml" />
+    <Content Include="Views\Master\Package.cshtml" />
+    <Content Include="Views\Master\RTA.cshtml" />
+    <Content Include="Views\Master\Postcodes.cshtml" />
+>>>>>>> dev
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
