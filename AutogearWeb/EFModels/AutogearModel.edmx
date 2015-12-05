@@ -132,8 +132,8 @@
             <PropertyRef Name="InstructorId" />
           </Key>
           <Property Name="InstructorId" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="First_Name" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Last_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
           <Property Name="Gender" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Phone" Type="int" />
           <Property Name="Mobile" Type="int" />
@@ -229,7 +229,7 @@ warning 6002: The table/view 'autogear.dbo.Student_License' does not have a prim
           <Property Name="Start_Date" Type="datetime" />
           <Property Name="Status" Type="bit" Nullable="false" />
           <Property Name="Created_Date" Type="datetime" />
-          <Property Name="Created_By" Type="nvarchar" MaxLength="50" />
+          <Property Name="Created_By" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="Modified_Date" Type="datetime" />
           <Property Name="Modified_By" Type="nvarchar" MaxLength="50" />
         </EntityType>
@@ -296,6 +296,18 @@ warning 6002: The table/view 'autogear.dbo.Student_License' does not have a prim
             </Principal>
             <Dependent Role="Student_Address">
               <PropertyRef Name="S_Number" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Students_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="Created_By" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -380,6 +392,10 @@ warning 6002: The table/view 'autogear.dbo.Student_License' does not have a prim
             <End Role="Students" EntitySet="Students" />
             <End Role="Student_Address" EntitySet="Student_Address" />
           </AssociationSet>
+          <AssociationSet Name="FK_Students_AspNetUsers" Association="Self.FK_Students_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
           <AssociationSet Name="FK_Suburbs_Suburbs" Association="Self.FK_Suburbs_Suburbs">
             <End Role="States" EntitySet="States" />
             <End Role="Suburbs" EntitySet="Suburbs" />
@@ -416,6 +432,10 @@ warning 6002: The table/view 'autogear.dbo.Student_License' does not have a prim
           <AssociationSet Name="FK_Instructors_AspNetUsers" Association="autogearModel.FK_Instructors_AspNetUsers">
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="Instructor" EntitySet="Instructors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_AspNetUsers" Association="autogearModel.FK_Students_AspNetUsers">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="Student" EntitySet="Students" />
           </AssociationSet>
           <AssociationSet Name="FK_Users_AspNetUsers" Association="autogearModel.FK_Users_AspNetUsers">
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
@@ -506,6 +526,7 @@ warning 6002: The table/view 'autogear.dbo.Student_License' does not have a prim
           <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="EmployeeId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Instructor" Relationship="autogearModel.FK_Instructors_AspNetUsers" FromRole="AspNetUser" ToRole="Instructor" />
+          <NavigationProperty Name="Students" Relationship="autogearModel.FK_Students_AspNetUsers" FromRole="AspNetUser" ToRole="Student" />
           <NavigationProperty Name="Users" Relationship="autogearModel.FK_Users_AspNetUsers" FromRole="AspNetUser" ToRole="User" />
         </EntityType>
         <EntityType Name="Booking">
@@ -570,8 +591,8 @@ warning 6002: The table/view 'autogear.dbo.Student_License' does not have a prim
             <PropertyRef Name="InstructorId" />
           </Key>
           <Property Name="InstructorId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="First_Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Gender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Phone" Type="Int32" />
           <Property Name="Mobile" Type="Int32" />
@@ -634,9 +655,10 @@ warning 6002: The table/view 'autogear.dbo.Student_License' does not have a prim
           <Property Name="Start_Date" Type="DateTime" Precision="3" />
           <Property Name="Status" Type="Boolean" Nullable="false" />
           <Property Name="Created_Date" Type="DateTime" Precision="3" />
-          <Property Name="Created_By" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Created_By" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="Modified_Date" Type="DateTime" Precision="3" />
           <Property Name="Modified_By" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="autogearModel.FK_Students_AspNetUsers" FromRole="Student" ToRole="AspNetUser" />
           <NavigationProperty Name="Bookings" Relationship="autogearModel.FK_Bookings_Students" FromRole="Student" ToRole="Booking" />
           <NavigationProperty Name="Student_Address" Relationship="autogearModel.FK_Student_Address_Students" FromRole="Student" ToRole="Student_Address" />
         </EntityType>
@@ -702,6 +724,18 @@ warning 6002: The table/view 'autogear.dbo.Student_License' does not have a prim
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Students_AspNetUsers">
+          <End Type="autogearModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="autogearModel.Student" Role="Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="Created_By" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Users_AspNetUsers">
           <End Type="autogearModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
           <End Type="autogearModel.User" Role="User" Multiplicity="*" />
@@ -762,7 +796,7 @@ warning 6002: The table/view 'autogear.dbo.Student_License' does not have a prim
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -906,8 +940,8 @@ warning 6002: The table/view 'autogear.dbo.Student_License' does not have a prim
                 <ScalarProperty Name="Mobile" ColumnName="Mobile" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
-                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="InstructorId" ColumnName="InstructorId" />
               </MappingFragment>
             </EntityTypeMapping>

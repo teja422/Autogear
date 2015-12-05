@@ -16,6 +16,7 @@ namespace AutogearWeb.EFModels
     {
         public AspNetUser()
         {
+            this.Students = new HashSet<Student>();
             this.Users = new HashSet<User>();
         }
     
@@ -40,6 +41,7 @@ namespace AutogearWeb.EFModels
         public int EmployeeId { get; set; }
     
         public virtual Instructor Instructor { get; set; }
+        public virtual ICollection<Student> Students { get; set; }
         public virtual ICollection<User> Users { get; set; }
     }
 }

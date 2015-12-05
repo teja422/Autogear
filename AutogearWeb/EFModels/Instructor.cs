@@ -15,8 +15,8 @@ namespace AutogearWeb.EFModels
     public partial class Instructor
     {
         public string InstructorId { get; set; }
-        public string First_Name { get; set; }
-        public string Last_Name { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public string Gender { get; set; }
         public Nullable<int> Phone { get; set; }
         public Nullable<int> Mobile { get; set; }
