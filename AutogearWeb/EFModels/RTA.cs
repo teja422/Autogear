@@ -14,7 +14,14 @@ namespace AutogearWeb.EFModels
     
     public partial class RTA
     {
-        public int RTA_ID { get; set; }
-        public string RTA_Name { get; set; }
+        public RTA()
+        {
+            this.Bookings = new HashSet<Booking>();
+        }
+    
+        public int Id { get; set; }
+        public string Name { get; set; }
+    
+        public virtual ICollection<Booking> Bookings { get; set; }
     }
 }

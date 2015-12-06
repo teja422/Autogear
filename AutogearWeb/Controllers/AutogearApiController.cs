@@ -8,14 +8,14 @@ namespace AutogearWeb.Controllers
 {
     public class AutogearApiController : ApiController
     {
-        private readonly IInstructor _instructorRepo;
+        private readonly IInstructorRepo _instructorRepo;
 
         public AutogearApiController()
         {
             
         }
 
-        public AutogearApiController(IInstructor instructorRepo)
+        public AutogearApiController(IInstructorRepo instructorRepo)
         {
             _instructorRepo = instructorRepo;
         }

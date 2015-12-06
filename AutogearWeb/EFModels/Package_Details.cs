@@ -14,15 +14,24 @@ namespace AutogearWeb.EFModels
     
     public partial class Package_Details
     {
-        public int Package_ID { get; set; }
+        public Package_Details()
+        {
+            this.Bookings = new HashSet<Booking>();
+        }
+    
+        public int PackageId { get; set; }
         public string Name { get; set; }
         public int NumberOfHours { get; set; }
         public int Cost { get; set; }
         public string Description { get; set; }
         public string Type { get; set; }
-        public Nullable<System.DateTime> Created_Date { get; set; }
-        public Nullable<System.DateTime> Modified_Date { get; set; }
-        public string Created_By { get; set; }
-        public string Modified_By { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public Nullable<System.DateTime> ModifiedDate { get; set; }
+        public string CreatedBy { get; set; }
+        public string ModifiedBy { get; set; }
+    
+        public virtual AspNetUser AspNetUser { get; set; }
+        public virtual AspNetUser AspNetUser1 { get; set; }
+        public virtual ICollection<Booking> Bookings { get; set; }
     }
 }

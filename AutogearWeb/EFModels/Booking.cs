@@ -14,30 +14,33 @@ namespace AutogearWeb.EFModels
     
     public partial class Booking
     {
-        public int Booking_ID { get; set; }
-        public int S_Number { get; set; }
-        public int I_Number { get; set; }
-        public Nullable<System.DateTime> Booking_Date { get; set; }
-        public Nullable<System.TimeSpan> Start_Time { get; set; }
-        public Nullable<System.TimeSpan> End_Time { get; set; }
-        public string Pick_Location { get; set; }
-        public string Drop_Location { get; set; }
-        public int Package_ID { get; set; }
+        public int BookingId { get; set; }
+        public int StudentId { get; set; }
+        public string InstructorId { get; set; }
+        public Nullable<System.DateTime> BookingDate { get; set; }
+        public Nullable<System.TimeSpan> StartTime { get; set; }
+        public Nullable<System.TimeSpan> EndTime { get; set; }
+        public string PickupLocation { get; set; }
+        public string DropLocation { get; set; }
+        public Nullable<int> PackageId { get; set; }
         public string Discount { get; set; }
         public string Status { get; set; }
-        public Nullable<System.DateTime> Cancelled_Date { get; set; }
-        public string Cancelled_Reason { get; set; }
+        public Nullable<System.DateTime> CancelledDate { get; set; }
+        public string CancelledReason { get; set; }
         public string Type { get; set; }
-        public Nullable<int> RTA_ID { get; set; }
-        public string DrivingTest_Status { get; set; }
-        public Nullable<int> DrivingTest_Attempt { get; set; }
-        public Nullable<System.DateTime> Created_Date { get; set; }
-        public Nullable<System.DateTime> Modified_Date { get; set; }
-        public string Created_By { get; set; }
-        public string Modified_By { get; set; }
+        public Nullable<int> RTAId { get; set; }
+        public string DrivingTestStatus { get; set; }
+        public Nullable<int> DrivingTestAttempt { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public Nullable<System.DateTime> ModifiedDate { get; set; }
+        public string CreatedBy { get; set; }
+        public string ModifiedBy { get; set; }
     
-        public virtual Booking Bookings1 { get; set; }
-        public virtual Booking Booking1 { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
+        public virtual AspNetUser AspNetUser1 { get; set; }
+        public virtual Instructor Instructor { get; set; }
+        public virtual Package_Details Package_Details { get; set; }
+        public virtual RTA RTA { get; set; }
         public virtual Student Student { get; set; }
     }
 }

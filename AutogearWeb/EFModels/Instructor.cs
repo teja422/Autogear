@@ -14,6 +14,13 @@ namespace AutogearWeb.EFModels
     
     public partial class Instructor
     {
+        public Instructor()
+        {
+            this.Bookings = new HashSet<Booking>();
+            this.Instructor_Leaves = new HashSet<Instructor_Leaves>();
+            this.Instructor_Student = new HashSet<Instructor_Student>();
+        }
+    
         public string InstructorId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -27,5 +34,8 @@ namespace AutogearWeb.EFModels
         public string Modified_By { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
+        public virtual ICollection<Booking> Bookings { get; set; }
+        public virtual ICollection<Instructor_Leaves> Instructor_Leaves { get; set; }
+        public virtual ICollection<Instructor_Student> Instructor_Student { get; set; }
     }
 }

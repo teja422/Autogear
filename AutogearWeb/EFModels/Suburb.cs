@@ -14,10 +14,8 @@ namespace AutogearWeb.EFModels
     
     public partial class Suburb
     {
-        public int Suburb_ID { get; set; }
+        public int SuburbId { get; set; }
         public string Suburb_Name { get; set; }
-        public int State_ID { get; set; }
-    
-        public virtual State State { get; set; }
+        public int StateId { get; set; }
     }
 }
