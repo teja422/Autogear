@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using AutogearWeb.EFModels;
@@ -10,7 +8,7 @@ using AutogearWeb.Models;
 
 namespace AutogearWeb.Repositories
 {
-    public interface IInstructor : IDisposable
+    public interface IInstructorRepo : IDisposable
     {
         autogearEntities DataContext { get; set; }
         IList<SelectListItem> GenderListItems();

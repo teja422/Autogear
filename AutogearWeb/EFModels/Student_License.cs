@@ -14,13 +14,15 @@ namespace AutogearWeb.EFModels
     
     public partial class Student_License
     {
-        public int ID { get; set; }
-        public Nullable<int> S_Number { get; set; }
-        public string License_No { get; set; }
-        public int State_ID { get; set; }
-        public System.DateTime Expiry_Date { get; set; }
+        public int Id { get; set; }
+        public int StudentId { get; set; }
+        public string LicenseNo { get; set; }
+        public int StateId { get; set; }
+        public System.DateTime ExpiryDate { get; set; }
         public string Class { get; set; }
         public Nullable<System.DateTime> License_passed_Date { get; set; }
         public string Remarks { get; set; }
+    
+        public virtual Student Student { get; set; }
     }
 }

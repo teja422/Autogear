@@ -54,8 +54,8 @@ namespace AutogearWeb
             container.RegisterType<IRoleStore<IdentityRole, string>, RoleStore<IdentityRole>>(
             new InjectionConstructor(typeof(ApplicationDbContext)));
 
-            container.RegisterType<IInstructor, InstructorRepo>();
-
+            container.RegisterType<IInstructorRepo, InstructorRepo>();
+            container.RegisterType<IStudentRepo, StudentRepo>();
             container.RegisterType<AccountController>(
                 new InjectionConstructor(
                     typeof(ApplicationUserManager),

@@ -9,7 +9,7 @@ using AutogearWeb.Models;
 
 namespace AutogearWeb.Repositories
 {
-    public class InstructorRepo : IInstructor
+    public class InstructorRepo : IInstructorRepo
     {
         public void Dispose()
         {

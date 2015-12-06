@@ -12,12 +12,12 @@ namespace AutogearWeb.Controllers
     {
         private readonly ApplicationUserManager _userManager;
         private readonly ApplicationRoleManager _roleManager;
-        private readonly IInstructor _instructorRepo;
+        private readonly IInstructorRepo _instructorRepo;
 
         public InstructorController()
         {
         }
-        public InstructorController(ApplicationUserManager userManager, ApplicationRoleManager roleManager, IInstructor instructorRepo)
+        public InstructorController(ApplicationUserManager userManager, ApplicationRoleManager roleManager, IInstructorRepo instructorRepo)
         {
             _userManager = userManager;
             _roleManager = roleManager;

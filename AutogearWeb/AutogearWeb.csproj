@@ -309,9 +309,12 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\InstructorModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\StudentModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\IInstructor.cs" />
+    <Compile Include="Repositories\IInstructorRepo.cs" />
     <Compile Include="Repositories\InstructorRepo.cs" />
+    <Compile Include="Repositories\IStudentRepo.cs" />
+    <Compile Include="Repositories\StudentRepo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>

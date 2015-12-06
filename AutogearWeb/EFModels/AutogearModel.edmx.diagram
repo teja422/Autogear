@@ -5,32 +5,48 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="2d1bd4d0449f4025a60d27f5ea812cb5" Name="Diagram1" ZoomLevel="59">
-        <EntityTypeShape EntityType="autogearModel.C__MigrationHistory" Width="1.5" PointX="7.75" PointY="3.75" />
-        <EntityTypeShape EntityType="autogearModel.AspNetRole" Width="1.5" PointX="7.75" PointY="6.75" />
-        <EntityTypeShape EntityType="autogearModel.AspNetUserClaim" Width="1.5" PointX="9.75" PointY="3.75" />
-        <EntityTypeShape EntityType="autogearModel.AspNetUserLogin" Width="1.5" PointX="9.75" PointY="6.75" />
-        <EntityTypeShape EntityType="autogearModel.AspNetUserRole" Width="1.5" PointX="7.75" PointY="9.75" />
-        <EntityTypeShape EntityType="autogearModel.AspNetUser" Width="1.5" PointX="0.75" PointY="7.5" />
-        <EntityTypeShape EntityType="autogearModel.Booking" Width="1.5" PointX="5.25" PointY="10" />
-        <EntityTypeShape EntityType="autogearModel.Instructor_Leaves" Width="1.5" PointX="9.75" PointY="9.75" />
-        <EntityTypeShape EntityType="autogearModel.Instructor_Student" Width="1.5" PointX="11.75" PointY="0.75" />
-        <EntityTypeShape EntityType="autogearModel.Instructor" Width="1.5" PointX="3" PointY="1.625" />
-        <EntityTypeShape EntityType="autogearModel.Package_Details" Width="1.5" PointX="11.75" PointY="4.75" />
-        <EntityTypeShape EntityType="autogearModel.State" Width="1.5" PointX="5.75" PointY="1" />
-        <EntityTypeShape EntityType="autogearModel.Student_Address" Width="1.5" PointX="5.25" PointY="5.75" />
-        <EntityTypeShape EntityType="autogearModel.Student" Width="1.5" PointX="3" PointY="9" />
-        <EntityTypeShape EntityType="autogearModel.Suburb" Width="1.5" PointX="8" PointY="0.875" />
-        <EntityTypeShape EntityType="autogearModel.User" Width="1.5" PointX="3" PointY="16.375" />
-        <EntityTypeShape EntityType="autogearModel.PostCode" Width="1.5" PointX="11.75" PointY="8.75" />
-        <EntityTypeShape EntityType="autogearModel.RTA" Width="1.5" PointX="11.75" PointY="11.75" />
-        <EntityTypeShape EntityType="autogearModel.Student_License" Width="1.5" PointX="13.75" PointY="0.75" />
+        <EntityTypeShape EntityType="autogearModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="autogearModel.AspNetRole" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="autogearModel.AspNetUserClaim" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="autogearModel.AspNetUserLogin" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="autogearModel.AspNetUserRole" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="autogearModel.AspNetUser" Width="1.5" PointX="0.75" PointY="16.875" />
+        <EntityTypeShape EntityType="autogearModel.Booking" Width="1.5" PointX="8.25" PointY="30.625" />
+        <EntityTypeShape EntityType="autogearModel.Instructor_Leaves" Width="1.5" PointX="5.25" PointY="18.75" />
+        <EntityTypeShape EntityType="autogearModel.Instructor_Student" Width="1.5" PointX="5.25" PointY="25.375" />
+        <EntityTypeShape EntityType="autogearModel.Instructor" Width="1.5" PointX="3" PointY="19.75" />
+        <EntityTypeShape EntityType="autogearModel.Package_Details" Width="1.5" PointX="3" PointY="45" />
+        <EntityTypeShape EntityType="autogearModel.RTA" Width="1.5" PointX="6" PointY="30.875" />
+        <EntityTypeShape EntityType="autogearModel.State" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="autogearModel.Student_Address" Width="1.5" PointX="8.25" PointY="25.125" />
+        <EntityTypeShape EntityType="autogearModel.Student_License" Width="1.5" PointX="5.25" PointY="33.875" />
+        <EntityTypeShape EntityType="autogearModel.Student" Width="1.5" PointX="3" PointY="33.125" />
+        <EntityTypeShape EntityType="autogearModel.Suburb" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="autogearModel.User" Width="1.5" PointX="3" PointY="12.625" />
+        <EntityTypeShape EntityType="autogearModel.PostCode" Width="1.5" PointX="0.75" PointY="6.75" />
+        <AssociationConnector Association="autogearModel.FK_Bookings_AspNetUsers" />
+        <AssociationConnector Association="autogearModel.FK_Bookings_AspNetUsers1" />
+        <AssociationConnector Association="autogearModel.FK_Instructor_Leaves_AspNetUsers" />
+        <AssociationConnector Association="autogearModel.FK_Instructor_Leaves_AspNetUsers1" />
+        <AssociationConnector Association="autogearModel.FK_Instructor_Student_AspNetUsers" />
+        <AssociationConnector Association="autogearModel.FK_Instructor_Student_AspNetUsers1" />
         <AssociationConnector Association="autogearModel.FK_Instructors_AspNetUsers" />
+        <AssociationConnector Association="autogearModel.FK_Package_Details_AspNetUsers" />
+        <AssociationConnector Association="autogearModel.FK_Package_Details_AspNetUsers1" />
+        <AssociationConnector Association="autogearModel.FK_Student_Address_AspNetUsers" />
+        <AssociationConnector Association="autogearModel.FK_Student_Address_AspNetUsers1" />
         <AssociationConnector Association="autogearModel.FK_Students_AspNetUsers" />
+        <AssociationConnector Association="autogearModel.FK_Students_AspNetUsers1" />
         <AssociationConnector Association="autogearModel.FK_Users_AspNetUsers" />
-        <AssociationConnector Association="autogearModel.FK_Bookings_Bookings" />
+        <AssociationConnector Association="autogearModel.FK_Bookings_Instructors" />
+        <AssociationConnector Association="autogearModel.FK_Bookings_Package_Details" />
+        <AssociationConnector Association="autogearModel.FK_Bookings_RTAs" />
         <AssociationConnector Association="autogearModel.FK_Bookings_Students" />
-        <AssociationConnector Association="autogearModel.FK_Suburbs_Suburbs" />
+        <AssociationConnector Association="autogearModel.FK_Instructor_Leaves_Instructors" />
+        <AssociationConnector Association="autogearModel.FK_Instructor_Student_Instructors" />
+        <AssociationConnector Association="autogearModel.FK_Instructor_Student_Students" />
         <AssociationConnector Association="autogearModel.FK_Student_Address_Students" />
+        <AssociationConnector Association="autogearModel.FK_Student_License_Students" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

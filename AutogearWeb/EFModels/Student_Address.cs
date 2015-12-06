@@ -14,19 +14,21 @@ namespace AutogearWeb.EFModels
     
     public partial class Student_Address
     {
-        public int S_Address_ID { get; set; }
-        public int S_Number { get; set; }
+        public int AddressId { get; set; }
+        public int StudentId { get; set; }
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }
         public int SuburbID { get; set; }
         public int PostCode { get; set; }
         public string Phone { get; set; }
         public string Mobile { get; set; }
-        public System.DateTime Created_Date { get; set; }
-        public string Created_By { get; set; }
-        public System.DateTime Modified_Date { get; set; }
-        public string Modified_By { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public string CreatedBy { get; set; }
+        public System.DateTime ModifiedDate { get; set; }
+        public string ModifiedBy { get; set; }
     
+        public virtual AspNetUser AspNetUser { get; set; }
+        public virtual AspNetUser AspNetUser1 { get; set; }
         public virtual Student Student { get; set; }
     }
 }

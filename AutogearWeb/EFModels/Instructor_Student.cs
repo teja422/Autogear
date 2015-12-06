@@ -14,13 +14,18 @@ namespace AutogearWeb.EFModels
     
     public partial class Instructor_Student
     {
-        public int ID { get; set; }
-        public int I_Number { get; set; }
-        public int S_Number { get; set; }
+        public int Id { get; set; }
+        public string InstructorId { get; set; }
+        public int StudentId { get; set; }
         public Nullable<System.DateTime> DateLinked { get; set; }
-        public string Created_By { get; set; }
-        public Nullable<System.DateTime> Created_Date { get; set; }
-        public Nullable<System.DateTime> Modified_Date { get; set; }
-        public string Modified_By { get; set; }
+        public string CreatedBy { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public Nullable<System.DateTime> ModifiedDate { get; set; }
+        public string ModifiedBy { get; set; }
+    
+        public virtual AspNetUser AspNetUser { get; set; }
+        public virtual AspNetUser AspNetUser1 { get; set; }
+        public virtual Instructor Instructor { get; set; }
+        public virtual Student Student { get; set; }
     }
 }

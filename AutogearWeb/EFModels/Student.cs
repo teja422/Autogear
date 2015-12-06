@@ -17,22 +17,27 @@ namespace AutogearWeb.EFModels
         public Student()
         {
             this.Bookings = new HashSet<Booking>();
+            this.Instructor_Student = new HashSet<Instructor_Student>();
             this.Student_Address = new HashSet<Student_Address>();
+            this.Student_License = new HashSet<Student_License>();
         }
     
-        public int S_Number { get; set; }
-        public string First_Name { get; set; }
-        public string Last_Name { get; set; }
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public string Gender { get; set; }
-        public Nullable<System.DateTime> Start_Date { get; set; }
+        public Nullable<System.DateTime> StartDate { get; set; }
         public bool Status { get; set; }
-        public Nullable<System.DateTime> Created_Date { get; set; }
-        public string Created_By { get; set; }
-        public Nullable<System.DateTime> Modified_Date { get; set; }
-        public string Modified_By { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public string CreatedBy { get; set; }
+        public Nullable<System.DateTime> ModifiedDate { get; set; }
+        public string ModifiedBy { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
+        public virtual AspNetUser AspNetUser1 { get; set; }
         public virtual ICollection<Booking> Bookings { get; set; }
+        public virtual ICollection<Instructor_Student> Instructor_Student { get; set; }
         public virtual ICollection<Student_Address> Student_Address { get; set; }
+        public virtual ICollection<Student_License> Student_License { get; set; }
     }
 }
