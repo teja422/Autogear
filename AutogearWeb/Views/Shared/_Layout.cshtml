@@ -9,54 +9,31 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body class="no-skin">
-    <!-- #section:basics/navbar.layout -->
     <div id="navbar" class="navbar navbar-default">
-        <script type="text/javascript">
-            try { ace.settings.check('navbar', 'fixed') } catch (e) { }
-        </script>
-
         <div class="navbar-container" id="navbar-container">
-            <!-- #section:basics/sidebar.mobile.toggle -->
             <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
                 <span class="sr-only">Toggle sidebar</span>
-
                 <span class="icon-bar"></span>
 
                 <span class="icon-bar"></span>
 
                 <span class="icon-bar"></span>
             </button>
-
-            <!-- /section:basics/sidebar.mobile.toggle -->
             <div class="navbar-header pull-left">
-                <!-- #section:basics/navbar.layout.brand -->
                 <a href="#" class="navbar-brand">
                     <small>
                         <i class="fa fa-leaf"></i>
                         Autogear
                     </small>
                 </a>
-
-                <!-- /section:basics/navbar.layout.brand -->
-                <!-- #section:basics/navbar.toggle -->
-                <!-- /section:basics/navbar.toggle -->
             </div>
-
-            <!-- #section:basics/navbar.dropdown -->
             @Html.Partial("_LoginPartial")
-         
-
-            <!-- /section:basics/navbar.dropdown -->
-        </div><!-- /.navbar-container -->
+        </div>
     </div>
-
-    <!-- /section:basics/navbar.layout -->
     <div class="main-container" id="main-container">
         @Html.Partial("_NavigationBar")
         <div class="main-content">
             <div class="main-content-inner">
-                <!-- #section:basics/content.breadcrumbs -->
-
                 @if (Request.IsAuthenticated)
                 {
                     <div class="breadcrumbs" id="breadcrumbs">
@@ -74,35 +51,20 @@
                             </li>
                             <li class="active">@ViewBag.Title</li>
                         </ul><!-- /.breadcrumb -->
-
-
                     </div>
                 }
-                <!-- /section:basics/content.breadcrumbs -->
                 <div class="page-content">
-                    <!-- #section:settings.box -->
-                    <!-- /.ace-settings-container -->
-                    <!-- /section:settings.box -->
-                    <div class="page-header">
-                        <h1>
-                            @ViewBag.Title
-                        </h1>
-                    </div><!-- /.page-header -->
-
                     <div class="row">
                         <div class="col-xs-12">
-                            <!-- PAGE CONTENT BEGINS -->
                             @RenderBody()
-                            <!-- PAGE CONTENT ENDS -->
-                        </div><!-- /.col -->
-                    </div><!-- /.row -->
-                </div><!-- /.page-content -->
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div><!-- /.main-content -->
+        </div>
 
         <div class="footer">
             <div class="footer-inner">
-                <!-- #section:basics/footer -->
                 <div class="footer-content">
                     <span class="bigger-120">
                         <span class="blue bolder">Autogear</span>
@@ -124,16 +86,14 @@
                         </a>
                     </span>
                 </div>
-
-                <!-- /section:basics/footer -->
             </div>
         </div>
 
         <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
             <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
         </a>
-    </div><!-- /.main-container -->
-        @RenderSection("Scripts",false)
-    
+</div>
+    @Scripts.Render("~/bundles/jquery");
+    @RenderSection("Scripts",false)
 </body>
 </html>

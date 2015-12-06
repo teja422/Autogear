@@ -55,11 +55,13 @@ namespace AutogearWeb
             new InjectionConstructor(typeof(ApplicationDbContext)));
 
             container.RegisterType<IInstructor, InstructorRepo>();
+
             container.RegisterType<AccountController>(
                 new InjectionConstructor(
                     typeof(ApplicationUserManager),
                     typeof(ApplicationSignInManager),
                     typeof(ApplicationRoleManager)));
+            
         }
     }
 }
