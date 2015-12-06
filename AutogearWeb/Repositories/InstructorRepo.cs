@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using AutogearWeb.EFModels;
+using AutogearWeb.Models;
 
 namespace AutogearWeb.Repositories
 {
@@ -34,9 +37,20 @@ namespace AutogearWeb.Repositories
             return genderList;
         }
 
-        public IList<Instructor> GetInstructorList()
+        private IQueryable<TblInstructor> _tblInstructors;
+        public IQueryable<TblInstructor> TblInstructors
         {
-            return DataContext.Instructors.ToList();
+            get
+            {
+                _tblInstructors = _tblInstructors ?? DataContext.Instructors.Select(s => new TblInstructor {Email = s.Email , FirstName = s.FirstName,LastName = s.LastName, InstructorId = s.InstructorId, Mobile = s.Mobile.ToString(), Phone = s.Phone.ToString()});
+                return _tblInstructors;
+            }
+            set { _tblInstructors = value; }
+        }
+
+        public async Task<IList<TblInstructor>> GetInstructorList()
+        {
+            return await TblInstructors.ToListAsync();
         }
 
         public void AddIntructor(Instructor repo)

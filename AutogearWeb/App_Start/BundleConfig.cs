@@ -32,7 +32,12 @@ namespace AutogearWeb
                       "~/assets/css/ace-fonts.css",
                       "~/assets/css/ace.css"
                       ));
-
+            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+                "~/Scripts/jquery-2.1.4.js"
+                ));
+            bundles.Add(new ScriptBundle("~/bundles/jqGrid").Include(
+                "~/assets/js/jqGrid/jquery.jqGrid.js"
+                ));
             // Project specific scripts and style sheets
   //          bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
   //                      "~/Scripts/jquery-1.10.2.js",

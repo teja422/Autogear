@@ -14,7 +14,6 @@ namespace AutogearWeb.Controllers
         private readonly ApplicationRoleManager _roleManager;
         private readonly IInstructor _instructorRepo;
 
-
         public InstructorController()
         {
         }
@@ -25,12 +24,10 @@ namespace AutogearWeb.Controllers
             _instructorRepo = instructorRepo;
         }
 
-        
-
         // GET: Instructor
         public ActionResult Index()
         {
-            return View(_instructorRepo.GetInstructorList());
+            return View();
         }
 
         public ActionResult Create()
