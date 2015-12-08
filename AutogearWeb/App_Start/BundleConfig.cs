@@ -20,7 +20,8 @@ namespace AutogearWeb
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/respond.js",
+                      "~/assets/js/date-time/bootstrap-datepicker.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css"));
@@ -36,7 +37,8 @@ namespace AutogearWeb
                 "~/Scripts/jquery-2.1.4.js"
                 ));
             bundles.Add(new ScriptBundle("~/bundles/jqGrid").Include(
-                "~/assets/js/jqGrid/jquery.jqGrid.js"
+                "~/assets/js/jqGrid/jquery.jqGrid.js",
+                "~/assets/js/jqGrid/i18n/grid.locale-en.js"
                 ));
             // Project specific scripts and style sheets
   //          bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
