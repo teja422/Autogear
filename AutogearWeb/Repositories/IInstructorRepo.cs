@@ -11,8 +11,7 @@ namespace AutogearWeb.Repositories
     public interface IInstructorRepo : IDisposable
     {
         autogearEntities DataContext { get; set; }
-        IList<SelectListItem> GenderListItems();
-
+  
         IQueryable<TblInstructor> TblInstructors { get; set; }
         Task<IList<TblInstructor>> GetInstructorList(); // Fetch List
         Instructor GetInstructorByEmail(string email); // Fetch by Email

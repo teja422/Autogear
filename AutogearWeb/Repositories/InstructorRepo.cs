@@ -24,19 +24,7 @@ namespace AutogearWeb.Repositories
         }
 
 
-        public IList<SelectListItem> GenderListItems()
-        {
-            string[] list = {"", "Male", "Female"};
-            var genderList = new List<SelectListItem>();
-            var i = 0;
-            foreach (var gender in list)
-            {
-                genderList.Add(new SelectListItem {Value = i.ToString(), Text = gender});
-                i++;
-            }
-            return genderList;
-        }
-
+     
         private IQueryable<TblInstructor> _tblInstructors;
         public IQueryable<TblInstructor> TblInstructors
         {

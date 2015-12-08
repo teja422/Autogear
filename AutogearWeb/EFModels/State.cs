@@ -14,7 +14,14 @@ namespace AutogearWeb.EFModels
     
     public partial class State
     {
+        public State()
+        {
+            this.Suburbs = new HashSet<Suburb>();
+        }
+    
         public int StateId { get; set; }
         public string State_Name { get; set; }
+    
+        public virtual ICollection<Suburb> Suburbs { get; set; }
     }
 }

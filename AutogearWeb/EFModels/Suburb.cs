@@ -14,8 +14,16 @@ namespace AutogearWeb.EFModels
     
     public partial class Suburb
     {
+        public Suburb()
+        {
+            this.PostCodes = new HashSet<PostCode>();
+        }
+    
         public int SuburbId { get; set; }
         public string Suburb_Name { get; set; }
         public int StateId { get; set; }
+    
+        public virtual ICollection<PostCode> PostCodes { get; set; }
+        public virtual State State { get; set; }
     }
 }

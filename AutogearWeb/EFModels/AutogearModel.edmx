@@ -158,8 +158,6 @@
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="128" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'AutogearDB.dbo.PostCodes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="PostCodes">
           <Key>
             <PropertyRef Name="PostCode" />
@@ -226,6 +224,7 @@ warning 6002: The table/view 'AutogearDB.dbo.PostCodes' does not have a primary 
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="ModifiedDate" Type="datetime" />
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="Email" Type="nvarchar" MaxLength="300" Nullable="false" />
         </EntityType>
         <EntityType Name="Suburbs">
           <Key>
@@ -437,6 +436,18 @@ warning 6002: The table/view 'AutogearDB.dbo.PostCodes' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_PostCodes_Suburbs1">
+          <End Role="Suburbs" Type="Self.Suburbs" Multiplicity="1" />
+          <End Role="PostCodes" Type="Self.PostCodes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Suburbs">
+              <PropertyRef Name="SuburbId" />
+            </Principal>
+            <Dependent Role="PostCodes">
+              <PropertyRef Name="SuburbID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Student_Address_AspNetUsers">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
           <End Role="Student_Address" Type="Self.Student_Address" Multiplicity="*" />
@@ -509,6 +520,18 @@ warning 6002: The table/view 'AutogearDB.dbo.PostCodes' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Suburbs_States">
+          <End Role="States" Type="Self.States" Multiplicity="1" />
+          <End Role="Suburbs" Type="Self.Suburbs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="States">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="Suburbs">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Users_AspNetUsers">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
@@ -533,6 +556,7 @@ warning 6002: The table/view 'AutogearDB.dbo.PostCodes' does not have a primary 
           <EntitySet Name="Instructor_Student" EntityType="Self.Instructor_Student" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Instructors" EntityType="Self.Instructors" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Package_Details" EntityType="Self.Package_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PostCodes" EntityType="Self.PostCodes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RTAs" EntityType="Self.RTAs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="States" EntityType="Self.States" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student_Address" EntityType="Self.Student_Address" Schema="dbo" store:Type="Tables" />
@@ -540,12 +564,6 @@ warning 6002: The table/view 'AutogearDB.dbo.PostCodes' does not have a primary 
           <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Suburbs" EntityType="Self.Suburbs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PostCodes" EntityType="Self.PostCodes" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [PostCodes].[PostCode] AS [PostCode], 
-    [PostCodes].[SuburbID] AS [SuburbID]
-    FROM [dbo].[PostCodes] AS [PostCodes]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_Bookings_AspNetUsers" Association="Self.FK_Bookings_AspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="Bookings" EntitySet="Bookings" />
@@ -610,6 +628,10 @@ warning 6002: The table/view 'AutogearDB.dbo.PostCodes' does not have a primary 
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="Package_Details" EntitySet="Package_Details" />
           </AssociationSet>
+          <AssociationSet Name="FK_PostCodes_Suburbs1" Association="Self.FK_PostCodes_Suburbs1">
+            <End Role="Suburbs" EntitySet="Suburbs" />
+            <End Role="PostCodes" EntitySet="PostCodes" />
+          </AssociationSet>
           <AssociationSet Name="FK_Student_Address_AspNetUsers" Association="Self.FK_Student_Address_AspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="Student_Address" EntitySet="Student_Address" />
@@ -634,6 +656,10 @@ warning 6002: The table/view 'AutogearDB.dbo.PostCodes' does not have a primary 
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="Students" EntitySet="Students" />
           </AssociationSet>
+          <AssociationSet Name="FK_Suburbs_States" Association="Self.FK_Suburbs_States">
+            <End Role="States" EntitySet="States" />
+            <End Role="Suburbs" EntitySet="Suburbs" />
+          </AssociationSet>
           <AssociationSet Name="FK_Users_AspNetUsers" Association="Self.FK_Users_AspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="Users" EntitySet="Users" />
@@ -655,6 +681,7 @@ warning 6002: The table/view 'AutogearDB.dbo.PostCodes' does not have a primary 
           <EntitySet Name="Instructor_Student" EntityType="autogearModel.Instructor_Student" />
           <EntitySet Name="Instructors" EntityType="autogearModel.Instructor" />
           <EntitySet Name="Package_Details" EntityType="autogearModel.Package_Details" />
+          <EntitySet Name="PostCodes" EntityType="autogearModel.PostCode" />
           <EntitySet Name="RTAs" EntityType="autogearModel.RTA" />
           <EntitySet Name="States" EntityType="autogearModel.State" />
           <EntitySet Name="Student_Address" EntityType="autogearModel.Student_Address" />
@@ -662,7 +689,6 @@ warning 6002: The table/view 'AutogearDB.dbo.PostCodes' does not have a primary 
           <EntitySet Name="Students" EntityType="autogearModel.Student" />
           <EntitySet Name="Suburbs" EntityType="autogearModel.Suburb" />
           <EntitySet Name="Users" EntityType="autogearModel.User" />
-          <EntitySet Name="PostCodes" EntityType="autogearModel.PostCode" />
           <AssociationSet Name="FK_Bookings_AspNetUsers" Association="autogearModel.FK_Bookings_AspNetUsers">
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="Booking" EntitySet="Bookings" />
@@ -746,6 +772,14 @@ warning 6002: The table/view 'AutogearDB.dbo.PostCodes' does not have a primary 
           <AssociationSet Name="FK_Instructor_Student_Students" Association="autogearModel.FK_Instructor_Student_Students">
             <End Role="Student" EntitySet="Students" />
             <End Role="Instructor_Student" EntitySet="Instructor_Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostCodes_Suburbs1" Association="autogearModel.FK_PostCodes_Suburbs1">
+            <End Role="Suburb" EntitySet="Suburbs" />
+            <End Role="PostCode" EntitySet="PostCodes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Suburbs_States" Association="autogearModel.FK_Suburbs_States">
+            <End Role="State" EntitySet="States" />
+            <End Role="Suburb" EntitySet="Suburbs" />
           </AssociationSet>
           <AssociationSet Name="FK_Student_Address_Students" Association="autogearModel.FK_Student_Address_Students">
             <End Role="Student" EntitySet="Students" />
@@ -943,6 +977,15 @@ warning 6002: The table/view 'AutogearDB.dbo.PostCodes' does not have a primary 
           <NavigationProperty Name="AspNetUser1" Relationship="autogearModel.FK_Package_Details_AspNetUsers1" FromRole="Package_Details" ToRole="AspNetUser" />
           <NavigationProperty Name="Bookings" Relationship="autogearModel.FK_Bookings_Package_Details" FromRole="Package_Details" ToRole="Booking" />
         </EntityType>
+        <EntityType Name="PostCode">
+          <Key>
+            <PropertyRef Name="PostCode1" />
+            <PropertyRef Name="SuburbID" />
+          </Key>
+          <Property Name="PostCode1" Type="Int32" Nullable="false" />
+          <Property Name="SuburbID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Suburb" Relationship="autogearModel.FK_PostCodes_Suburbs1" FromRole="PostCode" ToRole="Suburb" />
+        </EntityType>
         <EntityType Name="RTA">
           <Key>
             <PropertyRef Name="Id" />
@@ -957,6 +1000,7 @@ warning 6002: The table/view 'AutogearDB.dbo.PostCodes' does not have a primary 
           </Key>
           <Property Name="StateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="State_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Suburbs" Relationship="autogearModel.FK_Suburbs_States" FromRole="State" ToRole="Suburb" />
         </EntityType>
         <EntityType Name="Student_Address">
           <Key>
@@ -1006,6 +1050,7 @@ warning 6002: The table/view 'AutogearDB.dbo.PostCodes' does not have a primary 
           <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
           <Property Name="ModifiedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="AspNetUser" Relationship="autogearModel.FK_Students_AspNetUsers" FromRole="Student" ToRole="AspNetUser" />
           <NavigationProperty Name="AspNetUser1" Relationship="autogearModel.FK_Students_AspNetUsers1" FromRole="Student" ToRole="AspNetUser" />
           <NavigationProperty Name="Bookings" Relationship="autogearModel.FK_Bookings_Students" FromRole="Student" ToRole="Booking" />
@@ -1020,6 +1065,8 @@ warning 6002: The table/view 'AutogearDB.dbo.PostCodes' does not have a primary 
           <Property Name="SuburbId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Suburb_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="StateId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PostCodes" Relationship="autogearModel.FK_PostCodes_Suburbs1" FromRole="Suburb" ToRole="PostCode" />
+          <NavigationProperty Name="State" Relationship="autogearModel.FK_Suburbs_States" FromRole="Suburb" ToRole="State" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -1031,14 +1078,6 @@ warning 6002: The table/view 'AutogearDB.dbo.PostCodes' does not have a primary 
           <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="AspNetUser" Relationship="autogearModel.FK_Users_AspNetUsers" FromRole="User" ToRole="AspNetUser" />
-        </EntityType>
-        <EntityType Name="PostCode">
-          <Key>
-            <PropertyRef Name="PostCode1" />
-            <PropertyRef Name="SuburbID" />
-          </Key>
-          <Property Name="PostCode1" Type="Int32" Nullable="false" />
-          <Property Name="SuburbID" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK_Bookings_AspNetUsers">
           <End Type="autogearModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
@@ -1292,6 +1331,30 @@ warning 6002: The table/view 'AutogearDB.dbo.PostCodes' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_PostCodes_Suburbs1">
+          <End Type="autogearModel.Suburb" Role="Suburb" Multiplicity="1" />
+          <End Type="autogearModel.PostCode" Role="PostCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Suburb">
+              <PropertyRef Name="SuburbId" />
+            </Principal>
+            <Dependent Role="PostCode">
+              <PropertyRef Name="SuburbID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Suburbs_States">
+          <End Type="autogearModel.State" Role="State" Multiplicity="1" />
+          <End Type="autogearModel.Suburb" Role="Suburb" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="Suburb">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Student_Address_Students">
           <End Type="autogearModel.Student" Role="Student" Multiplicity="1" />
           <End Type="autogearModel.Student_Address" Role="Student_Address" Multiplicity="*" />
@@ -1482,6 +1545,14 @@ warning 6002: The table/view 'AutogearDB.dbo.PostCodes' does not have a primary 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="PostCodes">
+            <EntityTypeMapping TypeName="autogearModel.PostCode">
+              <MappingFragment StoreEntitySet="PostCodes">
+                <ScalarProperty Name="SuburbID" ColumnName="SuburbID" />
+                <ScalarProperty Name="PostCode1" ColumnName="PostCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="RTAs">
             <EntityTypeMapping TypeName="autogearModel.RTA">
               <MappingFragment StoreEntitySet="RTAs">
@@ -1533,6 +1604,7 @@ warning 6002: The table/view 'AutogearDB.dbo.PostCodes' does not have a primary 
           <EntitySetMapping Name="Students">
             <EntityTypeMapping TypeName="autogearModel.Student">
               <MappingFragment StoreEntitySet="Students">
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
@@ -1563,14 +1635,6 @@ warning 6002: The table/view 'AutogearDB.dbo.PostCodes' does not have a primary 
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PostCodes">
-            <EntityTypeMapping TypeName="autogearModel.PostCode">
-              <MappingFragment StoreEntitySet="PostCodes">
-                <ScalarProperty Name="SuburbID" ColumnName="SuburbID" />
-                <ScalarProperty Name="PostCode1" ColumnName="PostCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

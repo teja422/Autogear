@@ -36,6 +36,7 @@ namespace AutogearWeb.EFModels
         public virtual DbSet<Instructor_Student> Instructor_Student { get; set; }
         public virtual DbSet<Instructor> Instructors { get; set; }
         public virtual DbSet<Package_Details> Package_Details { get; set; }
+        public virtual DbSet<PostCode> PostCodes { get; set; }
         public virtual DbSet<RTA> RTAs { get; set; }
         public virtual DbSet<State> States { get; set; }
         public virtual DbSet<Student_Address> Student_Address { get; set; }
@@ -43,6 +44,5 @@ namespace AutogearWeb.EFModels
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<Suburb> Suburbs { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<PostCode> PostCodes { get; set; }
     }
 }
