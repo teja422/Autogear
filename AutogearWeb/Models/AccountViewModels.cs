@@ -100,6 +100,7 @@ namespace AutogearWeb.Models
         [Required]
         public int Gender { get; set; }
 
+        [Display(Name = "Home Phone")]
         public string Phone { get; set; }
 
         public string Mobile { get; set; }
@@ -111,7 +112,7 @@ namespace AutogearWeb.Models
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
+        [Display(Name = "Confirm Password")]
         [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
