@@ -165,40 +165,51 @@ namespace AutogearWeb.Repositories
                 };
                 DataContext.Student_License.Add(studentLicense);
                 DataContext.SaveChanges();
-                // Booking Information
-                var studentBooking = new Booking
+                if (!string.IsNullOrEmpty(studentModel.InstructorName))
                 {
-                    StudentId = student.Id,
-                    PackageId = studentModel.PackageId,
-                    CreatedDate = DateTime.Now,
-                    BookingDate = studentModel.BookingDate,
-                    StartTime = studentModel.StartTime,
-                    EndTime = studentModel.StopTime,
-                    Discount = studentModel.PackageDisacount,
-                    PickupLocation = studentModel.PickupLocation,
-                    DropLocation = studentModel.DropLocation,
-                    CreatedBy = currentUser,
-                    Type = "Learning"
-                };
-                DataContext.Bookings.Add(studentBooking);
-                DataContext.SaveChanges();
-                // Driving Test Information
-                var studentDrivingBooking = new Booking
-                {
-                    StudentId = student.Id,
-                    PackageId = studentModel.DrivingTestPackageId,
-                    CreatedDate = DateTime.Now,
-                    BookingDate = studentModel.DrivingTestDate,
-                    StartTime = studentModel.DrivingTestStartTime,
-                    EndTime = studentModel.DrivingTestStopTime,
-                    Discount = studentModel.DrivingTestPackageDisacount,
-                    PickupLocation = studentModel.DrivingTestPickupLocation,
-                    DropLocation = studentModel.DrivingTestDropLocation,
-                    CreatedBy = currentUser,
-                    Type = "Driving"
-                };
-                DataContext.Bookings.Add(studentDrivingBooking);
-                DataContext.SaveChanges();
+                    var instructor =
+                        DataContext.Instructors.SingleOrDefault(
+                            s => (s.FirstName + " " + s.LastName) == studentModel.InstructorName);
+                    // Booking Information
+                    if (instructor != null)
+                    {
+                        var studentBooking = new Booking
+                        {
+                            StudentId = student.Id,
+                            PackageId = studentModel.PackageId,
+                            CreatedDate = DateTime.Now,
+                            BookingDate = studentModel.BookingDate,
+                            InstructorId = instructor.InstructorId,
+                            StartTime = studentModel.StartTime,
+                            EndTime = studentModel.StopTime,
+                            Discount = studentModel.PackageDisacount,
+                            PickupLocation = studentModel.PickupLocation,
+                            DropLocation = studentModel.DropLocation,
+                            CreatedBy = currentUser,
+                            Type = "Learning"
+                        };
+                        DataContext.Bookings.Add(studentBooking);
+                        DataContext.SaveChanges();
+                        // Driving Test Information
+                        var studentDrivingBooking = new Booking
+                        {
+                            StudentId = student.Id,
+                            PackageId = studentModel.DrivingTestPackageId,
+                            CreatedDate = DateTime.Now,
+                            BookingDate = studentModel.DrivingTestDate,
+                            StartTime = studentModel.DrivingTestStartTime,
+                            EndTime = studentModel.DrivingTestStopTime,
+                            Discount = studentModel.DrivingTestPackageDisacount,
+                            PickupLocation = studentModel.DrivingTestPickupLocation,
+                            DropLocation = studentModel.DrivingTestDropLocation,
+                            CreatedBy = currentUser,
+                            Type = "Driving"
+                        };
+                        DataContext.Bookings.Add(studentDrivingBooking);
+                        DataContext.SaveChanges();
+                    }
+                   
+                }
             }
         }
     }

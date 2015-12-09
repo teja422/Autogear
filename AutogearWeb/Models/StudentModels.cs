@@ -94,7 +94,7 @@ namespace AutogearWeb.Models
         [Display(Name = "Start Date")]
         public DateTime? StartDate { get; set; }
         public bool Status { get; set; }
-        public string InstructorId { get; set; }
+        public string InstructorName { get; set; }
         [Display(Name = "License Number")]
         public string LicenseNumber { get; set; }
         [Display(Name = "Expiry Date")]

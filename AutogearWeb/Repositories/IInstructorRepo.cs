@@ -14,9 +14,9 @@ namespace AutogearWeb.Repositories
   
         IQueryable<TblInstructor> TblInstructors { get; set; }
         Task<IList<TblInstructor>> GetInstructorList(); // Fetch List
+        Task<IList<string>>  GetInstructorNames(); // Fetch Instructor Names
         Instructor GetInstructorByEmail(string email); // Fetch by Email
         void AddIntructor(Instructor repo); // Add new instructor
         void SaveInDatabase();  // Save Asynchronous
-
     }
 }

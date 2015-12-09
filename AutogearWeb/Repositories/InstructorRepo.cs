@@ -41,6 +41,11 @@ namespace AutogearWeb.Repositories
             return await TblInstructors.ToListAsync();
         }
 
+        public async Task<IList<string>> GetInstructorNames()
+        {
+            return await TblInstructors.Select(s => s.FirstName + " " + s.LastName).ToListAsync();
+        }
+
         public void AddIntructor(Instructor repo)
         {
             DataContext.Instructors.Add(repo);
