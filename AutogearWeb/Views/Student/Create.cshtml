@@ -313,14 +313,16 @@
 
         <div class="form-group">
             <div class="col-md-offset-5 col-md-7">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Submit" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<div class="row">
+    <div class="col-lg-6">
+        <a href="@Url.Action("Index")" class="btn btn-default">@Html.Raw("Back to list")</a>
+    </div>
 </div>
 @section Scripts
 {
@@ -344,7 +346,8 @@
                 });
             });
         $("#StartDate,#ExpiryDate,#LicensePassedDate,#BookingDate,#DrivingTestDate").datepicker({
-            minDate:0
+            minDate: 0,
+            dateFormat: "dd-mm-yy"
         });
     });
     </script>

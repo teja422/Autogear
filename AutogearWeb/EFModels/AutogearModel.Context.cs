@@ -13,10 +13,10 @@ namespace AutogearWeb.EFModels
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class autogearEntities : DbContext
+    public partial class AutogearDBEntities : DbContext
     {
-        public autogearEntities()
-            : base("name=autogearEntities")
+        public AutogearDBEntities()
+            : base("name=AutogearDBEntities")
         {
         }
     

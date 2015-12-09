@@ -10,7 +10,7 @@ namespace AutogearWeb.Repositories
 {
     public interface IInstructorRepo : IDisposable
     {
-        autogearEntities DataContext { get; set; }
+        AutogearDBEntities DataContext { get; set; }
   
         IQueryable<TblInstructor> TblInstructors { get; set; }
         Task<IList<TblInstructor>> GetInstructorList(); // Fetch List

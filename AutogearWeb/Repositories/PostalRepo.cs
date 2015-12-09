@@ -16,11 +16,11 @@ namespace AutogearWeb.Repositories
         }
 
 
-        public autogearEntities DataContext { get; set; }
+        public AutogearDBEntities DataContext { get; set; }
 
         public PostalRepo()
         {
-            DataContext = new autogearEntities();
+            DataContext = new AutogearDBEntities();
         }
 
         private IQueryable<TblPostCodeModel> _tblPostCodeModels;
@@ -129,6 +129,21 @@ namespace AutogearWeb.Repositories
                 from q in TblSuburbModels
                 where p.PostCodeId == postCode && p.SuburbId == q.SuburbId
                 select q.Name).Distinct().ToListAsync();
+        }
+
+        public async Task<IList<TblPostCodeSuburbModel>> GetPostCodeWithSuburbs()
+        {
+            var postCodeSuburbModel = new List<TblPostCodeSuburbModel>();
+            foreach (var postcode in TblPostCodeModels)
+            {
+                var suburb = TblSuburbModels.SingleOrDefault(s => s.SuburbId == postcode.SuburbId);
+                postCodeSuburbModel.Add(new TblPostCodeSuburbModel
+                {
+                    PostCodeId = postcode.PostCodeId,
+                    SuburbName = (suburb == null )? "":suburb.Name
+                });
+            }
+            return await Task.Run(() => postCodeSuburbModel);
         }
     }
 }

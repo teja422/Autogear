@@ -18,4 +18,10 @@
         public int StateId { get; set; }
         public string Name { get; set; }
     }
+
+    public class TblPostCodeSuburbModel
+    {
+        public int PostCodeId { get; set; }
+        public string SuburbName { get; set; }
+    }
 }

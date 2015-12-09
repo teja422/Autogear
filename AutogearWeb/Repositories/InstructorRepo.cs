@@ -16,11 +16,11 @@ namespace AutogearWeb.Repositories
             throw new NotImplementedException();
         }
 
-        public autogearEntities DataContext { get; set; }
+        public AutogearDBEntities DataContext { get; set; }
 
         public  InstructorRepo()
         {
-            DataContext = new autogearEntities();
+            DataContext = new AutogearDBEntities();
         }
 
 

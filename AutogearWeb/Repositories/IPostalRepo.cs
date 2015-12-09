@@ -10,7 +10,7 @@ namespace AutogearWeb.Repositories
 {
     public interface IPostalRepo :  IDisposable
     {
-        autogearEntities DataContext { get; set; }
+        AutogearDBEntities DataContext { get; set; }
 
         IQueryable<TblPostCodeModel> TblPostCodeModels { get; set; }
         IQueryable<TblSuburbModel> TblSuburbModels { get; set; }
@@ -25,5 +25,6 @@ namespace AutogearWeb.Repositories
         State GetState(string stateName);
         Task<IList<int>> GetPostcodes(string suburbName);
         Task<IList<string>> GetSuburbNames(int? postCode);
+        Task<IList<TblPostCodeSuburbModel>> GetPostCodeWithSuburbs();
     }
 }

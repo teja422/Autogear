@@ -10,7 +10,7 @@ namespace AutogearWeb.Repositories
 {
     public interface IStudentRepo : IDisposable
     {
-        autogearEntities DataContext { get; set; }
+        AutogearDBEntities DataContext { get; set; }
         IQueryable<TblStudent> TblStudents { get; set; }
         IQueryable<TblStudentAddress> TblStudentAddresses { get; set; }
         IQueryable<TblStudentLicense> TblStudentLicenses { get; set; }
@@ -21,6 +21,7 @@ namespace AutogearWeb.Repositories
         Task<List<TblStudent>> GetStudentList();
         IList<SelectListItem> GetPackages();
         IList<SelectListItem> GetStateList();
+        void SaveStudent(StudentModel studentModel,string currentUser);
 
     }
 }

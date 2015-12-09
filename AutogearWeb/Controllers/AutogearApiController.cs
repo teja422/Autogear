@@ -6,6 +6,7 @@ using AutogearWeb.Repositories;
 
 namespace AutogearWeb.Controllers
 {
+    [Authorize]
     public class AutogearApiController : ApiController
     {
         private readonly IInstructorRepo _instructorRepo;
@@ -42,6 +43,11 @@ namespace AutogearWeb.Controllers
         public async Task<IList<string>> GetSubUrbs(int? postCode)
         {
             return await _postalRepo.GetSuburbNames(postCode);
+        }
+
+        public async Task<IList<TblPostCodeSuburbModel>> GetPostalCodewithSuburbs()
+        {
+            return await _postalRepo.GetPostCodeWithSuburbs();
         }
     }
 }

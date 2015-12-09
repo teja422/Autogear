@@ -16,11 +16,11 @@ namespace AutogearWeb.Repositories
             throw new NotImplementedException();
         }
 
-        public autogearEntities DataContext { get; set; }
+        public AutogearDBEntities DataContext { get; set; }
 
         public StudentRepo()
         {
-            DataContext = new autogearEntities();
+            DataContext = new AutogearDBEntities();
         }
 
         private IQueryable<TblStudent> _tblStudents;
@@ -132,6 +132,74 @@ namespace AutogearWeb.Repositories
         public IList<SelectListItem> GetStateList()
         {
             return TblStates.Select(s => new SelectListItem {Text = s.StateName, Value = s.StateId.ToString()}).ToList();
+        }
+
+        public void SaveStudent(StudentModel studentModel,string currentUser)
+        {
+            if (currentUser != null)
+            {
+                // Student Creation
+                var student = new Student
+                {
+                    FirstName = studentModel.FirstName,
+                    Email = studentModel.Email,
+                    LastName = studentModel.LastName,
+                    Gender = studentModel.Gender,
+                    Status = studentModel.Status,
+                    CreatedBy = currentUser,
+                    CreatedDate = DateTime.Now,
+                    StartDate = studentModel.StartDate,
+                };
+                DataContext.Students.Add(student);
+                DataContext.SaveChanges();
+                //License Information
+                var studentLicense = new Student_License
+                {
+                    StudentId = student.Id,
+                    ExpiryDate = Convert.ToDateTime(studentModel.ExpiryDate),
+                    StateId = studentModel.StateId,
+                    Class = studentModel.ClassName,
+                    LicenseNo = studentModel.LicenseNumber,
+                    License_passed_Date =studentModel.LicensePassedDate,
+                    Remarks = studentModel.Remarks
+                };
+                DataContext.Student_License.Add(studentLicense);
+                DataContext.SaveChanges();
+                // Booking Information
+                var studentBooking = new Booking
+                {
+                    StudentId = student.Id,
+                    PackageId = studentModel.PackageId,
+                    CreatedDate = DateTime.Now,
+                    BookingDate = studentModel.BookingDate,
+                    StartTime = studentModel.StartTime,
+                    EndTime = studentModel.StopTime,
+                    Discount = studentModel.PackageDisacount,
+                    PickupLocation = studentModel.PickupLocation,
+                    DropLocation = studentModel.DropLocation,
+                    CreatedBy = currentUser,
+                    Type = "Learning"
+                };
+                DataContext.Bookings.Add(studentBooking);
+                DataContext.SaveChanges();
+                // Driving Test Information
+                var studentDrivingBooking = new Booking
+                {
+                    StudentId = student.Id,
+                    PackageId = studentModel.DrivingTestPackageId,
+                    CreatedDate = DateTime.Now,
+                    BookingDate = studentModel.DrivingTestDate,
+                    StartTime = studentModel.DrivingTestStartTime,
+                    EndTime = studentModel.DrivingTestStopTime,
+                    Discount = studentModel.DrivingTestPackageDisacount,
+                    PickupLocation = studentModel.DrivingTestPickupLocation,
+                    DropLocation = studentModel.DrivingTestDropLocation,
+                    CreatedBy = currentUser,
+                    Type = "Driving"
+                };
+                DataContext.Bookings.Add(studentDrivingBooking);
+                DataContext.SaveChanges();
+            }
         }
     }
 }

@@ -1,10 +1,14 @@
-﻿using System.Web.Mvc;
+﻿using System.Web;
+using System.Web.Mvc;
 using AutogearWeb.Models;
 using AutogearWeb.Repositories;
+using Microsoft.AspNet.Identity;
+
 //using Microsoft.AspNet.Identity;
 
 namespace AutogearWeb.Controllers
 {
+    [Authorize]
     public class StudentController : Controller
     {
         private readonly IStudentRepo _iStudentRepo;
@@ -36,13 +40,18 @@ namespace AutogearWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(StudentModel model)
         {
+            var currentUser = Request.GetOwinContext().Authentication.User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
-
+                _iStudentRepo.SaveStudent(model,currentUser);
                 return RedirectToAction("Index");
                 //AddErrors(result);
             }
-            return View();
+            model.GendersList = _iAutogearRepo.GenderListItems();
+            model.StatesList = _iStudentRepo.GetStateList();
+            model.LearningPackages = _iStudentRepo.GetPackages();
+            model.DrivingPackages = _iStudentRepo.GetPackages();
+            return View(model);
         }
         public ActionResult Register()
         {

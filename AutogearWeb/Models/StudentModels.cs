@@ -10,7 +10,8 @@ namespace AutogearWeb.Models
         public int StudentId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Gender { get; set; }
+        public string Email { get; set; }
+        public int Gender { get; set; }
         public DateTime? StartDate { get; set; }
         public bool Status { get; set; }
         public string InstructorName { get; set; }
@@ -117,9 +118,9 @@ namespace AutogearWeb.Models
         [Display(Name = "Booking Date")]
         public DateTime? BookingDate { get; set; }
         [Display(Name = "Start Time")]
-        public string StartTime { get; set; }
+        public TimeSpan? StartTime { get; set; }
         [Display(Name = "End Time")]
-        public string StopTime { get; set; }
+        public TimeSpan? StopTime { get; set; }
         [Display(Name = "Pickup Location")]
         public string PickupLocation { get; set; }
         [Display(Name = "Drop Location")]
@@ -134,9 +135,9 @@ namespace AutogearWeb.Models
         [Display(Name = "Test Date")]
         public DateTime? DrivingTestDate { get; set; }
         [Display(Name = "Start Time")]
-        public string DrivingTestStartTime { get; set; }
+        public TimeSpan? DrivingTestStartTime { get; set; }
         [Display(Name = "End Time")]
-        public string DrivingTestStopTime { get; set; }
+        public TimeSpan? DrivingTestStopTime { get; set; }
         [Display(Name = "Pickup Location")]
         public string DrivingTestPickupLocation { get; set; }
         [Display(Name = "Drop Location")]

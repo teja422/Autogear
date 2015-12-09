@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 
 namespace AutogearWeb.Controllers
 {
+    [Authorize]
     public class InstructorController : Controller
     {
         private readonly ApplicationUserManager _userManager;
