@@ -16,27 +16,15 @@ namespace AutogearWeb.Repositories
             throw new NotImplementedException();
         }
 
-        public autogearEntities DataContext { get; set; }
+        public AutogearDBEntities DataContext { get; set; }
 
         public  InstructorRepo()
         {
-            DataContext = new autogearEntities();
+            DataContext = new AutogearDBEntities();
         }
 
 
-        public IList<SelectListItem> GenderListItems()
-        {
-            string[] list = {"", "Male", "Female"};
-            var genderList = new List<SelectListItem>();
-            var i = 0;
-            foreach (var gender in list)
-            {
-                genderList.Add(new SelectListItem {Value = i.ToString(), Text = gender});
-                i++;
-            }
-            return genderList;
-        }
-
+     
         private IQueryable<TblInstructor> _tblInstructors;
         public IQueryable<TblInstructor> TblInstructors
         {
@@ -51,6 +39,11 @@ namespace AutogearWeb.Repositories
         public async Task<IList<TblInstructor>> GetInstructorList()
         {
             return await TblInstructors.ToListAsync();
+        }
+
+        public async Task<IList<string>> GetInstructorNames()
+        {
+            return await TblInstructors.Select(s => s.FirstName + " " + s.LastName).ToListAsync();
         }
 
         public void AddIntructor(Instructor repo)

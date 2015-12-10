@@ -56,6 +56,8 @@ namespace AutogearWeb
 
             container.RegisterType<IInstructorRepo, InstructorRepo>();
             container.RegisterType<IStudentRepo, StudentRepo>();
+            container.RegisterType<IPostalRepo, PostalRepo>();
+            container.RegisterType<IAutogearRepo, AutogearRepo>();
             container.RegisterType<AccountController>(
                 new InjectionConstructor(
                     typeof(ApplicationUserManager),

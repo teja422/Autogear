@@ -16,5 +16,7 @@ namespace AutogearWeb.EFModels
     {
         public int PostCode1 { get; set; }
         public int SuburbID { get; set; }
+    
+        public virtual Suburb Suburb { get; set; }
     }
 }

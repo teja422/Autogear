@@ -36,6 +36,10 @@ namespace AutogearWeb
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                 "~/Scripts/jquery-2.1.4.js"
                 ));
+
+            bundles.Add(new ScriptBundle("~/bundles/jqueryUI").Include(
+    "~/Scripts/jquery-ui-1.11.4.js"
+    ));
             bundles.Add(new ScriptBundle("~/bundles/jqGrid").Include(
                 "~/assets/js/jqGrid/jquery.jqGrid.js",
                 "~/assets/js/jqGrid/i18n/grid.locale-en.js"

@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped table-bordered table-hover" id="jqGrid"></table>
+<div id="jqGridPager"></div>
+@section Scripts{
+    @Scripts.Render("~/bundles/jqGrid");
+    <script>
+        $(function() {
+            var baseUrl = "/Api/AutogearApi/";
+            $("#jqGrid").jqGrid({
+                url: baseUrl + "GetStudents",
+                datatype: "json",
+                colModel: [
+                 {
+                     label: 'First Name',
+                     name: 'FirstName',
+                     width: 100,
+                     key: true,
+                     editable: true,
+                     editrules: { required: true }
+                 },
+                 {
+                     label: 'Last Name',
+                     name: 'LastName',
+                     width: 100,
+                     editable: true // must set editable to true if you want to make the field editable
+                 },
+                 {
+                     label: 'Instructor',
+                     name: 'InstructorName',
+                     width: 100,
+                     editable: true
+                 },
+                 {
+                     label: 'StartDate',
+                     name: 'StartDate',
+                     width: 100,
+                     editable: true
+                 }
+                ],
+                sortname: 'FirstName',
+                sortorder: 'asc',
+                loadonce: true,
+                viewrecords: true,
+                width: 780,
+                height: 200,
+                rowNum: 10,
+                pager: "#jqGridPager"
+            });
+
+        });
+    </script>
+}
+
+
+
+
