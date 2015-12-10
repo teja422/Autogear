@@ -32,7 +32,7 @@ namespace AutogearWeb.Repositories
                  _tblStudents = _tblStudents ??
                      (from student in DataContext.Students
                         let instructorStudent =
-                            DataContext.Instructor_Student.SingleOrDefault(s => s.StudentId == student.Id)
+                            DataContext.Instructor_Student.FirstOrDefault(s => s.StudentId == student.Id)
                         where instructorStudent != null
                         select new TblStudent
                         {
@@ -173,6 +173,18 @@ namespace AutogearWeb.Repositories
                     // Booking Information
                     if (instructor != null)
                     {
+
+                        //Save instructor student
+                        var instructorStudent = new Instructor_Student
+                        {
+                            InstructorId = instructor.InstructorId,
+                            StudentId = student.Id,
+                            CreatedBy = currentUser,
+                            CreatedDate = DateTime.Now,
+                            
+                        };
+                        DataContext.Instructor_Student.Add(instructorStudent);
+                        DataContext.SaveChanges();
                         var studentBooking = new Booking
                         {
                             StudentId = student.Id,
@@ -197,6 +209,7 @@ namespace AutogearWeb.Repositories
                             PackageId = studentModel.DrivingTestPackageId,
                             CreatedDate = DateTime.Now,
                             BookingDate = studentModel.DrivingTestDate,
+                            InstructorId = instructor.InstructorId,
                             StartTime = studentModel.DrivingTestStartTime,
                             EndTime = studentModel.DrivingTestStopTime,
                             Discount = studentModel.DrivingTestPackageDisacount,
