@@ -41,19 +41,8 @@
                 url: baseUrl + "GetInstructors",
                 datatype: "json",
                 height: 250,
-                colNames: [' ','ID', 'First Name', 'Last Name', 'Email', 'Phone'],
-                colModel: [
-                    {
-                        name: 'myac', index: '', width: 80, fixed: true, sortable: false, resize: false,
-                        formatter: 'actions',
-                        formatoptions: {
-                            keys: true,
-                            //delbutton: false,//disable delete button
-
-                            delOptions: { recreateForm: true, beforeShowForm: beforeDeleteCallback },
-                            //editformbutton:true, editOptions:{recreateForm: true, beforeShowForm:beforeEditCallback}
-                        }
-                    },
+                colNames: ['ID', 'First Name', 'Last Name', 'Email', 'Phone'],
+                colModel: [                    
                     {name:'id',index:'id',width:0},
                    { name: 'FirstName', index: 'FirstName', width: 100, editable: true, sorttype: "date" },
                     { name: 'LastName', index: 'LastName', width: 100, editable: true, editoptions: { size: "20", maxlength: "30" } },
