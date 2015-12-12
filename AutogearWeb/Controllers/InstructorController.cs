@@ -87,6 +87,11 @@ namespace AutogearWeb.Controllers
             }
         }
 
+        public ActionResult Calendar()
+        {
+            return View("");
+        }
+
         public ActionResult UpdatePostalCodes()
         {
             var reader = new StreamReader(System.IO.File.OpenRead(Server.MapPath("~/Content/PostCodes.csv")));

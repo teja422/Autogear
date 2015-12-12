@@ -30,7 +30,7 @@ namespace AutogearWeb
                       "~/assets/css/bootstrap-datepicker3.css",
                       "~/assets/css/ui.jqgrid.css" ,
                       "~/assets/css/ace-fonts.css",
-                      "~/assets/css/ace.css"
+                      "~/assets/css/ace.css","~/assets/css/fullcalendar.css"
                       ));
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                 "~/Scripts/jquery-2.1.4.js"
@@ -41,6 +41,11 @@ namespace AutogearWeb
     ));
             bundles.Add(new ScriptBundle("~/bundles/jqGrid").Include(
                 "~/assets/js/jqGrid/jquery.jqGrid.js"
+                ));
+
+            bundles.Add(new ScriptBundle("~/bundles/Fullcalendar").Include(
+                "~/assets/js/date-time/moment.js",
+                "~/assets/js/fullcalendar.js"
                 ));
             // Project specific scripts and style sheets
   //          bundles.Add(new ScriptBundle("~/bundles/jquery").Include(

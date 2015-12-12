@@ -882,6 +882,7 @@
     <Content Include="Views\Instructor\Create.cshtml" />
     <Content Include="Views\Student\Index.cshtml" />
     <Content Include="Views\Student\Create.cshtml" />
+    <Content Include="Views\Instructor\Calendar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Providers\" />

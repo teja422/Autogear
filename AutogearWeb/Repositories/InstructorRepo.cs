@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -24,7 +25,16 @@ namespace AutogearWeb.Repositories
         }
 
 
-     
+        private IQueryable<TblBooking> _tblBookings;
+        public IQueryable<TblBooking> TblBookings
+        {
+            get
+            {
+                _tblBookings = _tblBookings ?? DataContext.Bookings.Select(s => new TblBooking { InstructorId = s.InstructorId,BookingId = s.BookingId ,StartTime = s.StartTime, StopTime = s.EndTime,BookingDate = s.BookingDate,StudentId = s.StudentId});
+                return _tblBookings;
+            }
+            set { _tblBookings = value; }
+        }
         private IQueryable<TblInstructor> _tblInstructors;
         public IQueryable<TblInstructor> TblInstructors
         {
@@ -40,7 +50,20 @@ namespace AutogearWeb.Repositories
         {
             return await TblInstructors.ToListAsync();
         }
-
+        
+        public async Task<IList<InstructorBooking>> GetInstructorBookingEvents(string instructorId)
+        {
+            var instuctorBookings = new List<InstructorBooking>();
+            foreach (var booking in TblBookings)
+            {
+                var student = DataContext.Students.FirstOrDefault(s => s.Id == booking.StudentId);
+                if (student != null)
+                    if (booking.StartTime != null)
+                        if (booking.BookingDate != null)
+                            instuctorBookings.Add(new InstructorBooking { Id = booking.BookingId, Start = booking.BookingDate.Value.ToString("yyyy-dd-MM"), Title = student.FirstName + " " + student.LastName });
+            }
+            return await Task.Run(() => instuctorBookings);
+        }
         public async Task<IList<string>> GetInstructorNames()
         {
             return await TblInstructors.Select(s => s.FirstName + " " + s.LastName).ToListAsync();
