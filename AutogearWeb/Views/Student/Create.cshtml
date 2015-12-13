@@ -5,14 +5,28 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
-
+@{
+    ViewBag.Title = "New Student";
+}
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1">Search Student</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="form-field-1" placeholder="StudentID or Student Name" class="col-xs-10 col-sm-8" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-3">
+
+            </div>
+        </div>
         <h2>Student Personal Details</h2>
         <div class="row">
             <div class="col-xs-6">
@@ -318,49 +332,64 @@
 
         <div class="form-group">
             <div class="col-md-offset-5 col-md-7">
-                <input type="submit" value="Submit" class="btn btn-default" />
+                <input type="submit" value="Submit" class="btn btn-info" />
             </div>
         </div>
     </div>
 }
-
-<div class="row">
-    <div class="col-lg-6">
-        <a href="@Url.Action("Index")" class="btn btn-default">@Html.Raw("Back to list")</a>
+<div class="=row">
+    <div class="clearfix form-actions">
+        <div class="col-md-offset-3 col-md-9">
+            <button class="btn btn-info" type="button">
+                <i class="ace-icon fa fa-check bigger-110"></i>
+                Submit
+            </button>
+            &nbsp; &nbsp; &nbsp;
+            <button class="btn" type="reset">
+                <i class="ace-icon fa fa-undo bigger-110"></i>
+                Reset
+            </button>
+            &nbsp; &nbsp; &nbsp;
+            <a href="@Url.Action("Index")" class="btn btn-danger">
+                <i class="ace-icon fa fa-reply icon-only"></i>
+                @Html.Raw("Back to list")
+            </a>
+        </div>
     </div>
 </div>
-@section Scripts
+
+    @section Scripts
 {
-    @Scripts.Render("~/bundles/jqueryUI");
-    <script>
-        $(function () {
-          //  var postalCodes = [], suburbNames = [];
-            var baseUrl = "/Api/AutogearApi/";
-            $.getJSON(baseUrl + "GetPostCodes", { suburbName: $("#SuburbName").val() }).then(function (data) {
-            //    postalCodes = data;
-                $("#PostalCode").autocomplete({
-                    source: data,
-                    minLength:2
+        @Scripts.Render("~/bundles/jqueryUI");
+        <script>
+            $(function () {
+                //  var postalCodes = [], suburbNames = [];
+                var baseUrl = "/Api/AutogearApi/";
+                $.getJSON(baseUrl + "GetPostCodes", { suburbName: $("#SuburbName").val() }).then(function (data) {
+                    //    postalCodes = data;
+                    $("#PostalCode").autocomplete({
+                        source: data,
+                        minLength: 2
+                    });
+                });
+                $.getJSON(baseUrl + "GetSubUrbs", { postCode: $("#PostalCode").val() }).then(function (data) {
+                    // postalCodes = data;
+                    $("#SuburbName").autocomplete({
+                        source: data,
+                        minLength: 3
+                    });
+                });
+                //SuburbName
+                $.getJSON(baseUrl + "GetInstructorNames").then(function (data) {
+                    $("#InstructorName").autocomplete({
+                        source: data,
+                        minLength: 2
+                    });
+                });
+                $("#StartDate,#ExpiryDate,#LicensePassedDate,#BookingDate,#DrivingTestDate").datepicker({
+                    minDate: 0,
+                    dateFormat: "dd-mm-yy"
                 });
             });
-            $.getJSON(baseUrl + "GetSubUrbs", { postCode: $("#PostalCode").val() }).then(function (data) {
-                // postalCodes = data;
-                $("#SuburbName").autocomplete({
-                    source: data,
-                    minLength:3
-                });
-            });
-            //SuburbName
-            $.getJSON(baseUrl + "GetInstructorNames").then(function(data) {
-                $("#InstructorName").autocomplete({
-                    source: data,
-                    minLength: 2
-                });
-            });
-        $("#StartDate,#ExpiryDate,#LicensePassedDate,#BookingDate,#DrivingTestDate").datepicker({
-            minDate: 0,
-            dateFormat: "dd-mm-yy"
-        });
-    });
-    </script>
-}
+        </script>
+    }

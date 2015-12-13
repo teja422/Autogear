@@ -1,6 +1,8 @@
 ﻿using System.Linq;
 using System.Net.Http.Formatting;
 using System.Web.Http;
+using Microsoft.Ajax.Utilities;
+using Newtonsoft.Json.Serialization;
 
 namespace AutogearWeb
 {
@@ -20,8 +22,10 @@ namespace AutogearWeb
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-            var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().First();
-            jsonFormatter.UseDataContractJsonSerializer = true;
+            var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().FirstOrDefault();
+
+            if (jsonFormatter != null)
+                jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
         }
     }
 }

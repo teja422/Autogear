@@ -20,10 +20,12 @@ namespace AutogearWeb
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/respond.js",
+                      "~/assets/js/date-time/bootstrap-datepicker.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css"));
+                      "~/Content/bootstrap.css",
+                      "~/Content/Site.css"));
             bundles.Add(new StyleBundle("~/Content/AceCss").Include(
                       "~/assets/css/font-awesome.css",
                       "~/assets/css/jquery-ui.css",
@@ -40,7 +42,8 @@ namespace AutogearWeb
     "~/Scripts/jquery-ui-1.11.4.js"
     ));
             bundles.Add(new ScriptBundle("~/bundles/jqGrid").Include(
-                "~/assets/js/jqGrid/jquery.jqGrid.js"
+                "~/assets/js/jqGrid/jquery.jqGrid.js",
+                "~/assets/js/jqGrid/i18n/grid.locale-en.js"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/Fullcalendar").Include(

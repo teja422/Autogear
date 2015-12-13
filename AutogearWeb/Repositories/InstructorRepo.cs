@@ -60,7 +60,10 @@ namespace AutogearWeb.Repositories
                 if (student != null)
                     if (booking.StartTime != null)
                         if (booking.BookingDate != null)
-                            instuctorBookings.Add(new InstructorBooking { Id = booking.BookingId, Start = booking.BookingDate.Value.ToString("yyyy-dd-MM"), Title = student.FirstName + " " + student.LastName });
+                        {
+                            var startTime = booking.BookingDate.Value.Add(booking.StartTime.Value);
+                            instuctorBookings.Add(new InstructorBooking { Id = booking.BookingId, Start = startTime.ToString("yyyy-MM-dd'T'HH:mm:ss"), Title = student.FirstName + " " + student.LastName });
+                        }
             }
             return await Task.Run(() => instuctorBookings);
         }

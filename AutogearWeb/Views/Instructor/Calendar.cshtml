@@ -5,20 +5,24 @@
 <div id='calendar'></div>
 @section Scripts
 {
-@Scripts.Render("~/bundles/Fullcalendar")
+    @Scripts.Render("~/bundles/Fullcalendar")
     <script>
         $(function() {
+            $.getJSON("/Api/AutogearApi/GetBookingEvents").success(function(data) {
+                console.log(data);
+            });
             $('#calendar').fullCalendar({
                 header: {
                     left: 'prev,next today',
+
                     center: 'title',
                     right: 'month,agendaWeek,agendaDay'
                 },
                 defaultDate: '2015-12-01',
                 editable: true,
 
-               
-                events: '/Api/AutogearApi/GetBookingEvents'
+
+                events: "/Api/AutogearApi/GetBookingEvents"
             });
         });
     </script>
