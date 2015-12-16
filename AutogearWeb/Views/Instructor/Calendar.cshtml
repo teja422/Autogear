@@ -15,14 +15,7 @@
                 studentData = data;
             });
 
-            $.ajax({
-                url: "/Instructor/BookingAppointment",
-                method: "POST",
-                dataType: "html",
-                data: { bookingId: 0 }
-            }).success(function(data) {
-                modalDialog = data;
-            });
+            
             var calendar = $("#Calendar").fullCalendar({
                 header: {
                     left: "prev,next today",
@@ -32,47 +25,57 @@
                 defaultDate: "@(new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).ToString("yyyy-MM-dd"))",
                 selectable: true,
                 selectHelper: true,
-                select: function(start, end, allDay) {
-                    var modal = $(modalDialog).appendTo("body");
-                    modal.find("#StartDate").val(start.format());
-                    end = end.add("-1", "day");
-                    modal.find("#EndDate").val(end.format());
-                    modal.find("#StudentName").autocomplete({
-                        source: studentData,
-                        minLength: 2
-                    });
-                    modal.find("#submitForm").on("click", function(ev) {
-                        ev.preventDefault();
-                        var startTime = modal.find("#StartDate").val() + "T" + modal.find("#StartTime").val();
-                        var stopTime = modal.find("#EndDate").val() + "T" + modal.find("#StopTime").val();
-                        var bookingAppointment = {
-                            BookingId: modal.find("#BookingId").val(),
-                            StudentName: modal.find("#StudentName").val(),
-                            StartTime: modal.find("#StartTime").val(),
-                            StopTime: modal.find("#StopTime").val(),
-                            StartDate: modal.find("#StartDate").val(),
-                            EndDate: modal.find("#EndDate").val()
-                        }
-                        $.ajax({
-                            method: "POST",
-                            url: "/Api/AutogearApi/SaveBookingAppointment",
-                            data: bookingAppointment
+                select: function (start, end, allDay) {
+                    $.ajax({
+                        url: "/Instructor/BookingAppointment",
+                        method: "POST",
+                        dataType: "html",
+                        data: { bookingId: 0 }
+                    }).success(function (data) {
+                        modalDialog = data;
+                        var modal = $(modalDialog).appendTo("body");
+                        modal.find("#StartDate").val(start.format());
+                        end = end.add("-1", "day");
+                        modal.find("#EndDate").val(end.format());
+                        modal.find("#StudentName").autocomplete({
+                            source: studentData,
+                            minLength: 2
                         });
-                        calendar.fullCalendar('renderEvent',
-                            {
-                                title: modal.find("#StudentName").val(),
-                                start: startTime,
-                                end: stopTime,
-                                className: 'label-info'
-                            },
-                            true // make the event "stick"
-                        );
-                        modal.modal("hide");
+                        modal.find("#submitForm").on("click", function (ev) {
+                            ev.preventDefault();
+                            var startTime = modal.find("#StartDate").val() + "T" + modal.find("#StartTime").val();
+                            var stopTime = modal.find("#EndDate").val() + "T" + modal.find("#StopTime").val();
+                            var bookingAppointment = {
+                                BookingId: modal.find("#BookingId").val(),
+                                StudentName: modal.find("#StudentName").val(),
+                                StartTime: modal.find("#StartTime").val(),
+                                StopTime: modal.find("#StopTime").val(),
+                                StartDate: modal.find("#StartDate").val(),
+                                EndDate: modal.find("#EndDate").val()
+                            }
+                            $.ajax({
+                                method: "POST",
+                                url: "/Api/AutogearApi/SaveBookingAppointment",
+                                data: bookingAppointment
+                            });
+                            calendar.fullCalendar('renderEvent',
+                                {
+                                    title: modal.find("#StudentName").val(),
+                                    start: startTime,
+                                    end: stopTime,
+                                    className: 'label-info'
+                                },
+                                true // make the event "stick"
+                            );
+                            modal.modal("hide");
+                        });
+                        modal.modal("show").on("hidden", function () {
+                            modal.remove();
+                        });
+                        modal.find("#cancel").on("click", function () {
+                            modal.modal("hide");
+                        });
                     });
-                    modal.modal("show").on("hidden", function() {
-                        modal.remove();
-                    });
-
                 },
                 editable: true,
                 eventClick: function (calEvent, jsEvent, view) {
@@ -84,10 +87,12 @@
                     }).success(function (data) {
                         modalDialog = data;
                         var modal = $(modalDialog).appendTo("body");
-                        modal.find("#StartDate").val(calEvent.start.format());
-                        var end = calEvent.end.add("-1", "day");
-                        modal.find("#EndDate").val(end.format());
-
+                        var start = calEvent.start.format().split("T");
+                        modal.find("#StartDate").val(start[0]);
+                        var end = calEvent.end.add("-1", "day").format().split("T");
+                        modal.find("#EndDate").val(end[0]);
+                        modal.find("#StartTime").val(start[1]);
+                        modal.find("#StopTime").val(end[1]);
                         modal.find("#StudentName").autocomplete({
                             source: studentData,
                             minLength: 2
@@ -117,6 +122,9 @@
                         });
                         modal.modal("show").on("hidden", function () {
                             modal.remove();
+                        });
+                        modal.find("#cancel").on("click", function() {
+                            modal.modal("hide");
                         });
                     });
                 },

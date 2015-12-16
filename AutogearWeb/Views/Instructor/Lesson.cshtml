@@ -1,19 +1,18 @@
 ﻿
 @{
-    ViewBag.Title = "Students";
+    ViewBag.Title = "Lesson";
 }
 
-
 <p>
-    @Html.ActionLink("Create New", "Create", new object { }, new { @class = "btn btn-success" })
+    @Html.ActionLink("Create New", "BookingAppointment", new { bookingId=0 }, new { @class = "btn btn-success" })
 </p>
 <table id="jqGrid"></table>
 <div id="jqGridPager"></div>
 @section Scripts{
-@Scripts.Render("~/bundles/bootstrap");
+    @Scripts.Render("~/bundles/bootstrap");
     @Scripts.Render("~/bundles/jqGrid");
 
-<script type="text/javascript">
+    <script type="text/javascript">
     jQuery(function ($) {
         var baseUrl = "/Api/AutogearApi/";
         var grid_selector = "#jqGrid";
@@ -41,13 +40,13 @@
             //direction: "rtl",
 
 
-            url: baseUrl + "GetStudents",
+            url: baseUrl + "GetBookingEvents",
             datatype: "json",
             height: 250,
-            colNames: [' ', 'ID', 'First Name', 'Last Name', 'Instructor', 'StartDate'],
+            colNames: [' ', 'Name', 'StartDate', 'EndDate', 'StartTime','EndTime'],
             colModel: [
                 {
-                    name: 'myac', index: '', width: 80, fixed: true, sortable: false, resize: false,
+                    name: 'Name', index: 'Name', width: 80, fixed: true, sortable: false, resize: false,
                     formatter: 'actions',
                     formatoptions: {
                         keys: true,
@@ -57,11 +56,11 @@
                         //editformbutton:true, editOptions:{recreateForm: true, beforeShowForm:beforeEditCallback}
                     }
                 },
-                { name: 'studentId', index: 'id', width: 20 },
-               { name: 'firstName', index: 'FirstName', width: 100, editable: true},
-                { name: 'lastName', index: 'LastName', width: 100, editable: true, editoptions: { size: "20", maxlength: "30" } },
-                { name: 'instructorName', index: 'InstructorName', width: 150, editable: true, edittype: "checkbox" },
-                { name: 'startDate', index: 'StartDate', width: 120, editable: true, unformat: pickDate }
+                { label: 'Name', name: 'title', width: 100, editable: true },
+                { label: 'StartDate', name: 'start', width: 120, editable: true, unformat: pickDate },
+                { label: 'EndDate', name: 'end', width: 120, editable: true, unformat: pickDate },
+                { label: 'StartTime', name: 'start', width: 120, editable: true, unformat: pickTime },
+                { label: 'EndTime', name: 'end', width: 120, editable: true, unformat: pickTime }
             ],
 
             viewrecords: true,
@@ -127,6 +126,13 @@
             setTimeout(function () {
                 $(cell).find('input[type=text]')
                         .datepicker({ format: 'yyyy-mm-dd', autoclose: true });
+            }, 0);
+        }
+        //enable timeformat
+        function pickTime(cellvalue, options, cell) {
+            setTimeout(function () {
+                $(cell).find('input[type=text]')
+                    .timePicker({ format: 'hh:mm:ss', autoclose: true });
             }, 0);
         }
 
@@ -342,44 +348,50 @@
             $('.ui-jqdialog').remove();
         });
     });
-</script>
+    </script>
 
 
     <script>
         $(function() {
             var baseUrl = "/Api/AutogearApi/";
             $("#jqGrid").jqGrid({
-                url: baseUrl + "GetStudents",
+                url: baseUrl + "GetBookingEvents",
                 datatype: "json",
                 colModel: [
                  {
-                     label: 'First Name',
-                     name: 'FirstName',
+                     label: 'Name',
+                     name: 'Name',
                      width: 100,
                      key: true,
                      editable: true,
                      editrules: { required: true }
                  },
                  {
-                     label: 'Last Name',
-                     name: 'LastName',
+                     label: 'StartDate',
+                     name: 'StartDate',
                      width: 100,
                      editable: true // must set editable to true if you want to make the field editable
                  },
                  {
-                     label: 'Instructor',
-                     name: 'InstructorName',
+                     label: 'EndDate',
+                     name: 'EndDate',
                      width: 100,
                      editable: true
                  },
                  {
-                     label: 'StartDate',
-                     name: 'StartDate',
+                     label: 'StartTime',
+                     name: 'StartTime',
+                     width: 100,
+                     editable: true
+                 },
+                 {
+                     label: 'EndTime',
+                     name: 'EndTime',
                      width: 100,
                      editable: true
                  }
                 ],
-                sortname: 'FirstName',
+                sortname: 'Name',
                 sortorder: 'asc',
                 loadonce: true,
                 viewrecords: true,
@@ -392,7 +404,3 @@
         });
     </script>
 }
-
-
-
-
