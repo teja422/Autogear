@@ -4,14 +4,14 @@
 }
 
 <p>
-    @Html.ActionLink("Create New", "BookingAppointment", new { bookingId=0 }, new { @class = "btn btn-success" })
+    <a class="btn btn-success" id="createNew">Create New</a>
 </p>
 <table id="jqGrid"></table>
 <div id="jqGridPager"></div>
 @section Scripts{
     @Scripts.Render("~/bundles/bootstrap");
     @Scripts.Render("~/bundles/jqGrid");
-
+    @Scripts.Render("~/bundles/jqueryUI");
     <script type="text/javascript">
     jQuery(function ($) {
         var baseUrl = "/Api/AutogearApi/";
@@ -40,7 +40,7 @@
             //direction: "rtl",
 
 
-            url: baseUrl + "GetBookingEvents",
+            url: baseUrl + "GetStudentEvents",
             datatype: "json",
             height: 250,
             colNames: [' ', 'Name', 'StartDate', 'EndDate', 'StartTime','EndTime'],
@@ -56,11 +56,11 @@
                         //editformbutton:true, editOptions:{recreateForm: true, beforeShowForm:beforeEditCallback}
                     }
                 },
-                { label: 'Name', name: 'title', width: 100, editable: true },
-                { label: 'StartDate', name: 'start', width: 120, editable: true, unformat: pickDate },
-                { label: 'EndDate', name: 'end', width: 120, editable: true, unformat: pickDate },
-                { label: 'StartTime', name: 'start', width: 120, editable: true, unformat: pickTime },
-                { label: 'EndTime', name: 'end', width: 120, editable: true, unformat: pickTime }
+                { label: 'Name', name: 'studentName', width: 100, editable: true },
+                { label: 'StartDate', name: 'startDate', width: 120, editable: true, unformat: pickDate },
+                { label: 'EndDate', name: 'endDate', width: 120, editable: true, unformat: pickDate },
+                { label: 'StartTime', name: 'startTime', width: 120, editable: true, unformat: pickTime },
+                { label: 'EndTime', name: 'stopTime', width: 120, editable: true, unformat: pickTime }
             ],
 
             viewrecords: true,
@@ -129,12 +129,12 @@
             }, 0);
         }
         //enable timeformat
-        function pickTime(cellvalue, options, cell) {
-            setTimeout(function () {
-                $(cell).find('input[type=text]')
-                    .timePicker({ format: 'hh:mm:ss', autoclose: true });
-            }, 0);
-        }
+        //function pickTime(cellvalue, options, cell) {
+        //    setTimeout(function () {
+        //        $(cell).find('input[type=text]')
+        //            .timePicker({ format: 'hh:mm:ss', autoclose: true });
+        //    }, 0);
+        //}
 
 
         //navButtons
@@ -355,7 +355,7 @@
         $(function() {
             var baseUrl = "/Api/AutogearApi/";
             $("#jqGrid").jqGrid({
-                url: baseUrl + "GetBookingEvents",
+                url: baseUrl + "GetStudentEvents",
                 datatype: "json",
                 colModel: [
                  {
@@ -401,6 +401,66 @@
                 pager: "#jqGridPager"
             });
 
+        });
+        $(function () {
+            var modalDialog = "";
+            var studentData = "";
+            $.getJSON("/Api/AutogearApi/GetStudentNames").success(function (data) {
+                studentData = data;
+            });
+            $("#createNew").on("click", function() {
+                $.ajax({
+                    url: "/Instructor/BookingAppointment",
+                    method: "POST",
+                    dataType: "html",
+                    data: { bookingId: 0 }
+                }).success(function (data) {
+                    modalDialog = data;
+                    var modal = $(modalDialog).appendTo("body");
+                    var startDate = $.datepicker.formatDate("yy-mm-dd", new Date());
+                    modal.find("#StartDate").val(startDate);
+                    //end = end.add("-1", "day");
+                    modal.find("#EndDate").val(startDate);
+                    modal.find("#StudentName").autocomplete({
+                        source: studentData,
+                        minLength: 2
+                    });
+                    modal.find("#submitForm").on("click", function (ev) {
+                        ev.preventDefault();
+                        var startTime = modal.find("#StartDate").val() + "T" + modal.find("#StartTime").val();
+                        var stopTime = modal.find("#EndDate").val() + "T" + modal.find("#StopTime").val();
+                        var bookingAppointment = {
+                            BookingId: modal.find("#BookingId").val(),
+                            StudentName: modal.find("#StudentName").val(),
+                            StartTime: modal.find("#StartTime").val(),
+                            StopTime: modal.find("#StopTime").val(),
+                            StartDate: modal.find("#StartDate").val(),
+                            EndDate: modal.find("#EndDate").val()
+                        }
+                        $.ajax({
+                            method: "POST",
+                            url: "/Api/AutogearApi/SaveBookingAppointment",
+                            data: bookingAppointment
+                        });
+                        //newAppointment.fullCalendar('renderEvent',
+                        //    {
+                        //        title: modal.find("#StudentName").val(),
+                        //        start: startTime,
+                        //        end: stopTime,
+                        //        className: 'label-info'
+                        //    },
+                        //    true // make the event "stick"
+                        //);
+                        modal.modal("hide");
+                    });
+                    modal.modal("show").on("hidden", function () {
+                        modal.remove();
+                    });
+                    modal.find("#cancel").on("click", function () {
+                        modal.modal("hide");
+                    });
+                });
+            });
         });
     </script>
 }

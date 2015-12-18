@@ -85,6 +85,31 @@ namespace AutogearWeb.Repositories
             }
             return await Task.Run(() => instuctorBookings);
         }
+
+        public async Task<IList<StudentList>> GetStudentEvents(string currentUser)
+        {
+            var instuctorBookings = new List<StudentList>();
+            foreach (var booking in TblBookings.Where(b => b.StartDate != null && b.EndDate != null))
+            {
+                var student = DataContext.Students.FirstOrDefault(s => s.Id == booking.StudentId);
+                if (student != null)
+                {
+                    var startTime = booking.StartDate.Value.Add(booking.StartTime.Value);
+                    var stopTime = booking.EndDate.Value.Add(booking.StopTime.Value);
+                    instuctorBookings.Add(new StudentList
+                    {
+                        BookingId = booking.BookingId,
+                        StartTime = startTime.ToString("HH:mm:ss"),
+                        StopTime = stopTime.ToString("HH:mm:ss"),
+                        StudentName = student.FirstName + " " + student.LastName,
+                        StartDate = startTime.ToString("yyyy-MM-dd"),
+                        EndDate = stopTime.ToString("yyyy-MM-dd"),
+                    });
+                }
+            }
+            return await Task.Run(() => instuctorBookings);
+        }
+
         public async Task<IList<string>> GetInstructorNames()
         {
             return await TblInstructors.Select(s => s.FirstName + " " + s.LastName).ToListAsync();
